@@ -5,7 +5,7 @@ export const DefaultSeo = () => {
   return (
     <NextDefaultSeo
       title={siteSettings.name}
-      titleTemplate={`%s `}
+      titleTemplate={`%s`}
       defaultTitle={siteSettings.name}
       description={siteSettings.description}
       // canonical="https://vedas.vercel.app/"

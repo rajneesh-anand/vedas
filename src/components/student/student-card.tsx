@@ -27,7 +27,7 @@ const StudentCard: React.FC<StudentProps> = ({ student, className }) => {
       title={firstName}
     >
       <div className="relative flex-shrink-0">
-        <div className="flex overflow-hidden h-40 max-w-[230px] mx-auto transition duration-200 ease-in-out transform group-hover:scale-105 relative">
+        <div className="flex overflow-hidden h-48 max-w-[230px] mx-auto transition duration-200 ease-in-out transform group-hover:scale-105 relative">
           <Image
             src={photo ?? productPlaceholder}
             alt={firstName}

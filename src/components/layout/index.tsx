@@ -8,6 +8,9 @@ import MobileNavigation from '@components/layout/mobile-navigation/mobile-naviga
 import { useTranslation } from 'next-i18next';
 
 const Layout: React.FC = ({ children }) => {
+  let promotionEndDate = new Date('04/01/2022'); // mm/dd/yyyy
+  let timeDiff = Math.abs(promotionEndDate.getTime() - new Date().getTime()); // In Milli Seconds
+
   const { t } = useTranslation('common');
   const [highlightedBar, setHighlightedBar] = useSessionStorage(
     'borobazar-highlightedBar',
@@ -33,7 +36,7 @@ const Layout: React.FC = ({ children }) => {
               }}
             />
           </div>
-          <Countdown date={Date.now() + 4000000 * 71} />
+          <Countdown date={Date.now() + timeDiff} />
         </HighlightedBar>
       )}
       {/* End of highlighted bar  */}
