@@ -22,10 +22,11 @@ export const DefaultSeo = () => {
       additionalMetaTags={[
         {
           name: 'viewport',
-          content: 'width=device-width, initial-scale=1 maximum-scale=1',
+          content:
+            ' width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1',
         },
         {
-          name: 'apple-mobile-web-app-capable',
+          name: 'mobile-web-app-capable',
           content: 'yes',
         },
         {
@@ -36,7 +37,7 @@ export const DefaultSeo = () => {
       additionalLinkTags={[
         {
           rel: 'apple-touch-icon',
-          href: 'icons/apple-icon-180.png',
+          href: '/icons/apple-icon.png',
         },
         {
           rel: 'manifest',

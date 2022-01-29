@@ -20,7 +20,28 @@ export default class CustomDocument extends Document {
     return (
       <Html dir={getDirection(locale)}>
         <Head>
-          <link rel="icon" type="image/png" href="/images/favicon.png" />
+          <meta charSet="utf-8" />
+          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+          <link
+            href="/icons/favicon-16x16.png"
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+          />
+          <link
+            href="/icons/favicon-32x32.png"
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+          />
+          <link
+            href="/icons/favicon-96x96.png"
+            rel="icon"
+            type="image/png"
+            sizes="96x96"
+          />
+
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
