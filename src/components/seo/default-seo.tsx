@@ -36,12 +36,12 @@ export const DefaultSeo = () => {
       ]}
       additionalLinkTags={[
         {
-          rel: 'apple-touch-icon',
-          href: '/icons/apple-icon.png',
-        },
-        {
           rel: 'manifest',
           href: '/manifest.json',
+        },
+        {
+          rel: 'apple-touch-icon',
+          href: '/icons/apple-icon.png',
         },
       ]}
     />
