@@ -7,25 +7,27 @@ interface SeoProps extends NextSeoProps {
 const Seo = ({ title, description, path }: SeoProps) => {
   return (
     <NextSeo
-      title={`${title} | Vedas Academy `}
+      title={`${title} | VedasOne Academy `}
       description={description}
       canonical={`${process.env.PUBLIC_URL}/${path}`}
       openGraph={{
         url: `${process.env.PUBLIC_URL}/${path}`,
-        title: `${title} | Vedas Academy `,
+        title: `${title} | VedasOne Academy `,
         description,
         images: [
           {
-            url: '/images/og-image-01.png',
+            url: '/images/og-image-vedas-1.png',
             width: 800,
-            height: 600,
-            alt: 'Og Image Alt',
+            height: 370,
+            alt: 'Og Image',
+            type: 'image/png',
           },
           {
-            url: '/images/og-image-02.png',
-            width: 900,
-            height: 800,
-            alt: 'Og Image Alt Second',
+            url: '/images/og-image-vedas-1.png',
+            width: 300,
+            height: 139,
+            alt: 'Og Image Two',
+            type: 'image/png',
           },
         ],
       }}

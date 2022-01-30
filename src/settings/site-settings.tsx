@@ -6,7 +6,7 @@ import { DEFlag } from '@components/icons/language/DEFlag';
 import { ESFlag } from '@components/icons/language/ESFlag';
 
 export const siteSettings = {
-  name: 'Vedas Academy',
+  name: 'VedasOne Academy',
   description: 'Online Education Institute ',
   author: {
     name: 'RedQ, Inc.',
@@ -15,7 +15,7 @@ export const siteSettings = {
   },
   logo: {
     url: '/logo.svg',
-    alt: 'VedasAcademy',
+    alt: 'VedasOne Academy',
     href: '/',
     width: 128,
     height: 60,
