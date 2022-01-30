@@ -50,7 +50,7 @@ const HomeTopSection: React.FC<Props> = ({ className = 'pt-1.5 md:pt-0' }) => {
       // }}
     >
       <div className="max-w-[1920px] mx-auto px-4 sm:px-5 md:px-6 lg:px-16 xl:px-28 2xl:px-32 3xl:px-40 md:flex justify-between items-center">
-        <div className="hidden py-4 md:flex items-end ps-4 2xl:ps-0 md:max-w-[480px] lg:max-w-[540px] xl:max-w-auto -me-16 lg:-me-8 3xl:me-24">
+        <div className=" py-4 md:flex items-end ps-4 2xl:ps-0 md:max-w-[480px] lg:max-w-[540px] xl:max-w-auto  lg:-me-8 3xl:me-24">
           <Image
             src="/images/enrollment.png"
             alt="enrollment"
@@ -64,7 +64,7 @@ const HomeTopSection: React.FC<Props> = ({ className = 'pt-1.5 md:pt-0' }) => {
             <h2 className="text-[18px] md:text-2xl lg:text-2xl xl:text-3xl 2xl:text-[42px] leading-9 lg:leading-[1.4em] xl:leading-[1.45em] text-skin-base font-bold font-manrope -tracking-[0.2px] mb-12 lg:mb-8 text-center">
               " Learning is so exciting &amp; fun with{' '}
               <span className=" text-[24px] lg:text-5xl xl:text-5xl">
-                Vedas Academy
+                VedasOne Academy
               </span>{' '}
               "
             </h2>

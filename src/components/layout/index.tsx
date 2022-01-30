@@ -24,8 +24,8 @@ const Layout: React.FC = ({ children }) => {
           <div className="flex items-center">
             <div className="hidden sm:flex flex-shrink-0 items-center justify-center bg-skin-fill w-9 h-9 rounded-full me-2.5">
               <Image
-                width={23}
-                height={23}
+                width={32}
+                height={32}
                 src="/images/delivery-box.svg"
                 alt="Delivery Box"
               />

@@ -66,7 +66,7 @@ const Header: React.FC = () => {
           <div className="flex flex-shrink-0 space-s-5 xl:space-s-7 ms-auto">
             {/* <LanguageSwitcher /> */}
             {/* <CartButton className="hidden lg:flex" /> */}
-            <div className="hidden lg:flex items-center flex-shrink-0 ">
+            {/* <div className="hidden lg:flex items-center flex-shrink-0 ">
               <UserIcon className="text-skin-base text-opacity-40" />
               <AuthMenu
                 isAuthorized={isAuthorized}
@@ -78,7 +78,7 @@ const Header: React.FC = () => {
               >
                 {t('text-account')}
               </AuthMenu>
-            </div>
+            </div> */}
           </div>
         </Container>
       </div>

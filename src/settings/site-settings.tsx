@@ -14,7 +14,7 @@ export const siteSettings = {
     address: '',
   },
   logo: {
-    url: '/images/logo.png',
+    url: '/logo.svg',
     alt: 'VedasAcademy',
     href: '/',
     width: 128,

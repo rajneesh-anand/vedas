@@ -160,11 +160,7 @@ const ContactForm: React.FC = () => {
         <div className="flex flex-wrap -mx-3 mb-6 justify-center">
           <img
             className="inline object-cover w-32 h-32 mr-2 border-black rounded-full overflow-hidden border"
-            src={
-              profilePhoto
-                ? URL.createObjectURL(profilePhoto)
-                : '/images/logo.png'
-            }
+            src={profilePhoto ? URL.createObjectURL(profilePhoto) : '/logo.svg'}
             alt="Profile Photo"
           />
         </div>
