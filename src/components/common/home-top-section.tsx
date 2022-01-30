@@ -64,7 +64,7 @@ const HomeTopSection: React.FC<Props> = ({ className = 'pt-1.5 md:pt-0' }) => {
             <h2 className="text-[18px] md:text-2xl lg:text-2xl xl:text-3xl 2xl:text-[42px] leading-9 lg:leading-[1.4em] xl:leading-[1.45em] text-skin-base font-bold font-manrope -tracking-[0.2px] mb-12 lg:mb-8 text-center">
               " Learning is so exciting &amp; fun with{' '}
               <span className=" text-[24px] lg:text-5xl xl:text-5xl">
-                VedasOne Academy
+                VedusOne Academy
               </span>{' '}
               "
             </h2>

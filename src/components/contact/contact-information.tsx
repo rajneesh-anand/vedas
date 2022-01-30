@@ -13,7 +13,7 @@ const data = [
     icon: (
       <LocationIcon className="w-12 lg:w-13 xl:w-[60px] h-12 lg:h-13 xl:h-[60px]" />
     ),
-    name: 'Vedas Academy Location',
+    name: 'VedusOne Academy Location',
     description: 'text-office-location-details',
   },
   {

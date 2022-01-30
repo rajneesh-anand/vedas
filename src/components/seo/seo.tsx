@@ -7,12 +7,12 @@ interface SeoProps extends NextSeoProps {
 const Seo = ({ title, description, path }: SeoProps) => {
   return (
     <NextSeo
-      title={`${title} | VedasOne Academy `}
+      title={`${title} | VedusOne Academy `}
       description={description}
       canonical={`${process.env.PUBLIC_URL}/${path}`}
       openGraph={{
         url: `${process.env.PUBLIC_URL}/${path}`,
-        title: `${title} | VedasOne Academy `,
+        title: `${title} | VedusOne Academy `,
         description,
         images: [
           {

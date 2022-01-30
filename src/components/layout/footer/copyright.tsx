@@ -26,7 +26,7 @@ const Copyright: React.FC<CopyrightProps> = ({ payment }) => {
               className="text-skin-base transition-colors duration-200 ease-in-out hover:text-skin-primary"
               href={siteSettings.author.websiteUrl}
             >
-              Vedas Academy
+              VedusOne Academy
             </a>
             &nbsp; {t('text-all-rights-reserved')}
           </p>

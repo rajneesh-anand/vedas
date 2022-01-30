@@ -8,14 +8,14 @@ export const DefaultSeo = () => {
       titleTemplate={`%s`}
       defaultTitle={siteSettings.name}
       description={siteSettings.description}
-      canonical="https://vedas.vercel.app"
+      canonical="https://vedusone.com/"
       openGraph={{
         type: 'website',
         locale: 'en_IE',
         site_name: siteSettings.name,
       }}
       twitter={{
-        handle: '@vedasone',
+        handle: '@vedusone',
         site: '@site',
         cardType: 'summary_large_image',
       }}

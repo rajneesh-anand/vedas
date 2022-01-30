@@ -20,7 +20,7 @@ const StudentInformation: FC<StudentFeedProps> = ({ className }) => {
 
   return (
     <StudentsGridBlock
-      sectionHeading=" Enrolled Students in Vedas Academy "
+      sectionHeading=" Enrolled Students in VedusOne Academy "
       sectionSubHeading="Hurry up ! Enroll Now &amp; Get Discounted Tuition Fee"
       className={className}
       students={data?.students.data}

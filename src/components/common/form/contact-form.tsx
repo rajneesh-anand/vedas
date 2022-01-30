@@ -151,7 +151,7 @@ const ContactForm: React.FC = () => {
         <span className="w-10 h-10 me-3 lg:me-4 rounded-full bg-skin-primary bg-opacity-20 flex items-center justify-center flex-shrink-0">
           <IoCheckmarkCircle className="w-5 h-5 text-skin-primary" />
         </span>
-        Thank you for enrolling with Vedas Acacdemy
+        Thank you for enrolling with VedusOne Acacdemy
       </div>
     );
   } else {
