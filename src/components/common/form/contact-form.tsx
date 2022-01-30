@@ -694,7 +694,7 @@ const ContactForm: React.FC = () => {
         </div>
         <div className="text-center">
           <Button variant="formButton" className="" type="submit">
-            {processing ? 'Submitting Form ... ' : 'Enroll'}
+            {processing ? 'Submitting Form ... ' : 'ENROLL NOW'}
           </Button>
         </div>
       </form>

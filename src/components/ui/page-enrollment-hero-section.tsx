@@ -25,8 +25,8 @@ const PageEnrollmentHeroSection: React.FC<HeaderProps> = ({
           <h2 className="font-semibold  text-xl leading-7 md:leading-snug lg:leading-snug sm:text-2xl md:text-3xl lg:text-3xl 3xl:text-5xl 3xl:leading-snug  tracking-tight mb-2.5 uppercase text-white">
             Enrollment Form
           </h2>
-          <p className="text-15px lg:text-base xl:text-[17px] leading-7 lg:leading-8 xl:leading-9 text-skin-base text-opacity-60 ">
-            Fill Up the Enrollment Form before new academic session !
+          <p className="text-15px lg:text-base xl:text-[17px] leading-7 lg:leading-8 xl:leading-9 text-white text-opacity-60 ">
+            Fill Up the Enrollment Form before new academic session
           </p>
         </div>
       </div>
