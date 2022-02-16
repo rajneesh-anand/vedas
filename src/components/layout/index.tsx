@@ -6,6 +6,7 @@ import Header from '@components/layout/header';
 import Footer from '@components/layout/footer';
 import MobileNavigation from '@components/layout/mobile-navigation/mobile-navigation';
 import { useTranslation } from 'next-i18next';
+import WhatsAppWidget from 'react-whatsapp-widget';
 
 const Layout: React.FC = ({ children }) => {
   let promotionEndDate = new Date('04/01/2022'); // mm/dd/yyyy
@@ -50,10 +51,12 @@ const Layout: React.FC = ({ children }) => {
         {children}
       </main>
       <Footer />
+      <WhatsAppWidget
+        phoneNumber="918810436602"
+        companyName="VedusOne Academy"
+        message="What can we do for you ?"
+      />
       {/* <MobileNavigation /> */}
-      <div className="lg:hidden fixed z-30 -bottom-0.5 flex items-center justify-between shadow-bottomNavigation body-font bg-skin-fill w-full h-14 px-4 md:px-6 lg:px-8 text-skin-muted pb-0.5">
-        <button>Enroll Now</button>
-      </div>
     </div>
   );
 };

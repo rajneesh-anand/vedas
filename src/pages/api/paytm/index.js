@@ -22,7 +22,7 @@ export default async function handler(req, res) {
     mid: PaytmConfig.PaytmConfig.mid,
     websiteName: PaytmConfig.PaytmConfig.website,
     orderId: orderId,
-    callbackUrl: 'http:localhost:3000/payment/status',
+    callbackUrl: 'https://www.vedusone.com/payment/status',
     txnAmount: {
       value: amount,
       currency: 'INR',

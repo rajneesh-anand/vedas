@@ -138,7 +138,7 @@ export default function RegisterPage() {
       <Seo
         title="Register"
         description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
-        path="enrollment"
+        path="/auth/register"
       />
       {status === 'success' ? (
         <Container>

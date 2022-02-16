@@ -75,7 +75,11 @@ export default function LoginPage({ csrfToken }: any) {
 
   return (
     <>
-      <Seo title="Home" description="Online Education Institute" path="/" />
+      <Seo
+        title="Sign In"
+        description="Online Education Institute"
+        path="/auth/signin"
+      />
 
       <div
         style={{

@@ -555,3 +555,22 @@
   background-color: #4c51bf;
   color: #fff;
 }
+
+._1bpcM {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  background: #4fce5d;
+  color: white;
+  height: 56px !important;
+  width: 56px !important;
+  z-index: 998;
+}
+
+._2iWL7 {
+  position: fixed;
+  margin: 20px;
+  bottom: 56px;
+  right: 24px;
+  z-index: 999;
+}
