@@ -1,4 +1,4 @@
-import Layout from '@components/layout/layout';
+import Layout from '@components/layout';
 import AccountLayout from '@components/my-account/account-layout';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import PaymentBox from '@components/payment/payment-content';

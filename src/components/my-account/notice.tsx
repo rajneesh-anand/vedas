@@ -1,4 +1,4 @@
-import Layout from '@components/layout/layout';
+import Layout from '@components/layout';
 import { legalSetting } from '@settings/legal-setting';
 import Heading from '@components/ui/heading';
 import { Element } from 'react-scroll';

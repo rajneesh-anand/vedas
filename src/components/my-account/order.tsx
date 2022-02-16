@@ -1,4 +1,4 @@
-import Layout from '@components/layout/layout';
+import Layout from '@components/layout';
 import OrderTable from '@components/order/order-table';
 import { useOrdersQuery } from '@framework/order/get-all-orders';
 

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { RadioGroup } from '@headlessui/react';
 import cn from 'classnames';
-import Layout from '@components/layout/layout';
+import Layout from '@components/layout';
 import { useTranslation } from 'next-i18next';
 
 const deliveryDateSchedule = [

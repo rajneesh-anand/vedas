@@ -1,4 +1,4 @@
-import Layout from '@components/layout/layout';
+import Layout from '@components/layout';
 import PaymentBox from '@components/payment/payment-content';
 import { usePaymentQuery } from '@framework/payment/payment';
 
