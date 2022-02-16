@@ -5,7 +5,7 @@ const runtimeCaching = require('next-pwa/cache');
 const isProd = process.env.NODE_ENV === 'production';
 
 const apiUrl = isProd
-  ? 'https://blognodeserver.herokuapp.com/api'
+  ? ' https://vedusone.herokuapp.com/api'
   : 'http://localhost:8080/api';
 
 const publicUrl = isProd ? 'https://www.vedusone.com' : 'http://localhost:3000';

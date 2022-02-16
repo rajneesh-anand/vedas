@@ -1,4 +1,5 @@
 import type { AppProps } from 'next/app';
+import { SessionProvider } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { ManagedUIContext } from '@contexts/ui.context';
 import ManagedModal from '@components/common/modal/managed-modal';
@@ -10,6 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { appWithTranslation } from 'next-i18next';
 import { DefaultSeo } from '@components/seo/default-seo';
+import { FormProvider } from '@contexts/search/plan.context';
 
 // external
 import 'react-toastify/dist/ReactToastify.css';
@@ -41,9 +43,13 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
         <ManagedUIContext>
           <>
             <DefaultSeo />
-            <Layout pageProps={pageProps}>
-              <Component {...pageProps} key={router.route} />
-            </Layout>
+            <SessionProvider session={pageProps.session}>
+              <FormProvider>
+                <Layout pageProps={pageProps}>
+                  <Component {...pageProps} key={router.route} />
+                </Layout>
+              </FormProvider>
+            </SessionProvider>
             <ToastContainer />
             <ManagedModal />
             <ManagedDrawer />

@@ -4,8 +4,10 @@ import { FaChevronDown } from 'react-icons/fa';
 import { siteSettings } from '@settings/site-settings';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
+import { useSession } from 'next-auth/react';
 
 export default function LanguageSwitcher() {
+  const { data: session, status } = useSession();
   const { site_header } = siteSettings;
   const { t } = useTranslation('common');
   const options = site_header.languageMenu;

@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
-import Logo from '@components/ui/logo';
+import WhiteLogo from '@components/ui/whitelogo';
 import Text from '@components/ui/text';
 import Image from '@components/ui/image';
 import { ROUTES } from '@utils/routes';
@@ -22,8 +22,11 @@ const WidgetAbout: React.FC<AboutProps> = ({ social, className }) => {
   return (
     <div className={`pb-10 sm:pb-0 ${className}`}>
       <div className="flex flex-col text-center sm:text-start max-w-[300px] mx-auto sm:ms-0 pb-6 sm:pb-5">
-        <Logo href={ROUTES.HOME} className="mb-3 lg:mb-5 mx-auto sm:ms-0" />
-        <Text>{t('text-about-us')}</Text>
+        <WhiteLogo
+          href={ROUTES.HOME}
+          className="mb-3 lg:mb-5 mx-auto sm:ms-0"
+        />
+        {/* <p className="text-white">{t('text-about-us')}</p> */}
       </div>
 
       {social && (
@@ -33,7 +36,7 @@ const WidgetAbout: React.FC<AboutProps> = ({ social, className }) => {
               className="transition hover:opacity-80"
               key={`social-list--key${item.id}`}
             >
-              <Link href={item.path ? item.path : '/#'}>
+              <Link href={item.path ? item.path : '/'}>
                 <a target="_blank" rel="noreferrer">
                   <Image
                     src={item.image}

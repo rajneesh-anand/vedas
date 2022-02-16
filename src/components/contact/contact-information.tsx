@@ -40,7 +40,7 @@ const ContactInformation: FC = () => {
   return (
     <>
       {data.length > 0 && (
-        <div className="px-5 lg:px-0 xl:px-12 sm:grid grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-7 max-w-[1420px] mx-auto space-y-7 sm:space-y-0 pt-1">
+        <div className="px-5 py-[100px] lg:px-0 xl:px-12 sm:grid grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-7 max-w-[1420px] mx-auto space-y-7 sm:space-y-0">
           {data?.map((item: any) => (
             <div
               key={`contact--key${item.id}`}
@@ -48,7 +48,10 @@ const ContactInformation: FC = () => {
             >
               <div className="flex-shrink-0 w-14 xl:w-16">{item.icon}</div>
               <div className="lg:ps-3 2xl:ps-4 mt-4 lg:mt-0">
-                <Heading variant="title" className="mb-2 lg:mb-2.5 font-bold">
+                <Heading
+                  variant="mediumHeading"
+                  className="mb-2 lg:mb-2.5 font-bold"
+                >
                   {t(item.name)}
                 </Heading>
                 <Text>{t(item.description)}</Text>

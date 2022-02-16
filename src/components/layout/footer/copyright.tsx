@@ -20,15 +20,15 @@ const Copyright: React.FC<CopyrightProps> = ({ payment }) => {
     <div className="pb-20 lg:pb-7">
       <Container>
         <div className="flex flex-col md:flex-row text-center justify-center  border-t border-skin-three pt-6 lg:pt-7">
-          <p className="text-skin-base text-sm leading-7 lg:leading-[27px] lg:text-15px">
+          <p className="text-white text-sm leading-7 lg:leading-[27px] lg:text-15px">
             &copy;&nbsp;{t('text-copyright')} {year}&nbsp;
             <a
-              className="text-skin-base transition-colors duration-200 ease-in-out hover:text-skin-primary"
+              className="text-white transition-colors duration-200 ease-in-out hover:text-yellow-400"
               href={siteSettings.author.websiteUrl}
             >
               VedusOne Academy
             </a>
-            &nbsp; {t('text-all-rights-reserved')}
+            {/* &nbsp; {t('text-all-rights-reserved')} */}
           </p>
 
           {/* {payment && (

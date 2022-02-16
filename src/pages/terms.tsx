@@ -5,7 +5,7 @@ import { termsAndServices } from '@settings/terms-settings';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import { GetStaticProps } from 'next';
-import DownloadApps from '@components/common/home-top-section';
+
 import Heading from '@components/ui/heading';
 import Seo from '@components/seo/seo';
 
@@ -42,7 +42,6 @@ export default function TermsPage() {
           </div>
         </Container>
       </div>
-      <DownloadApps />
     </>
   );
 }

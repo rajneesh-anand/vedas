@@ -551,3 +551,7 @@
 .checkout .save-change-button {
   display: none;
 }
+.pricing-plan:hover .pricing-amount {
+  background-color: #4c51bf;
+  color: #fff;
+}

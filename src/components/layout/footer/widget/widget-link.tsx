@@ -20,10 +20,13 @@ const WidgetLink: React.FC<Props> = ({ className, data }) => {
   const { t } = useTranslation('footer');
   return (
     <div className={`${className}`}>
-      <Heading variant="mediumHeading" className="mb-4 sm:mb-5 lg:mb-6 pb-0.5">
+      <Heading
+        variant="mediumHeading"
+        className="mb-4 sm:mb-5 lg:mb-6 pb-0.5 text-white"
+      >
         {t(`${widgetTitle}`)}
       </Heading>
-      <ul className="text-sm lg:text-15px flex flex-col space-y-3">
+      <ul className="text-sm lg:text-15px flex flex-col space-y-4">
         {lists.map((list) => (
           <li
             key={`widget-list--key${list.id}`}
@@ -36,8 +39,8 @@ const WidgetLink: React.FC<Props> = ({ className, data }) => {
             )}
 
             <Link
-              href={list.path ? list.path : '#!'}
-              className="transition-colors duration-200 hover:text-skin-base"
+              href={list.path ? list.path : '/'}
+              className="transition-colors duration-200 text-gray-200 hover:text-yellow-400"
             >
               {t(`${list.title}`)}
             </Link>

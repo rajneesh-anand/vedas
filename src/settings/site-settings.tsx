@@ -20,6 +20,13 @@ export const siteSettings = {
     width: 128,
     height: 60,
   },
+  whitelogo: {
+    url: '/whitelogo.svg',
+    alt: 'VedusOne Academy',
+    href: '/',
+    width: 128,
+    height: 60,
+  },
   defaultLanguage: 'en',
   currencyCode: 'USD',
   site_header: {

@@ -25,6 +25,8 @@ import { fetchBestSellerGroceryProducts } from '@framework/product/get-all-best-
 import { fetchPopularProducts } from '@framework/product/get-all-popular-products';
 import { fetchStudents } from '@framework/student/get-all-students';
 import { LIMITS } from '@framework/utils/limits';
+import ClassList from '@components/class/classlist';
+import { ImFacebook } from 'react-icons/im';
 
 export default function Home() {
   return (
@@ -32,8 +34,10 @@ export default function Home() {
       <Seo title="Home" description="Online Education Institute" path="/" />
       <HomeTopSection />
       <Container>
+        <ClassList />
         <FeatureCarousel />
         <StudentsInformation className="mb-12 lg:mb-14 xl:mb-16 2xl:mb-20" />
+
         <ContactInformation />
       </Container>
     </>

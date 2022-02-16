@@ -19,7 +19,7 @@ const Layout: React.FC = ({ children }) => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {highlightedBar !== 'true' && (
+      {/* {highlightedBar !== 'true' && (
         <HighlightedBar onClose={() => setHighlightedBar('true')}>
           <div className="flex items-center">
             <div className="hidden sm:flex flex-shrink-0 items-center justify-center bg-skin-fill w-9 h-9 rounded-full me-2.5">
@@ -38,8 +38,7 @@ const Layout: React.FC = ({ children }) => {
           </div>
           <Countdown date={Date.now() + timeDiff} />
         </HighlightedBar>
-      )}
-      {/* End of highlighted bar  */}
+      )} */}
 
       <Header />
       <main
@@ -52,6 +51,9 @@ const Layout: React.FC = ({ children }) => {
       </main>
       <Footer />
       {/* <MobileNavigation /> */}
+      <div className="lg:hidden fixed z-30 -bottom-0.5 flex items-center justify-between shadow-bottomNavigation body-font bg-skin-fill w-full h-14 px-4 md:px-6 lg:px-8 text-skin-muted pb-0.5">
+        <button>Enroll Now</button>
+      </div>
     </div>
   );
 };

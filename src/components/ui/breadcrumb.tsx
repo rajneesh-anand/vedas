@@ -74,8 +74,8 @@ const Breadcrumb: React.FC<{ separator?: string }> = ({
         href={ROUTES.HOME}
         activeClassName="font-semibold text-heading"
       >
-        <a className="inline-flex items-center">
-          <IoHomeOutline className="me-1.5 text-skin-base text-15px" />
+        <a className="inline-flex items-center text-gray-300 hover:text-yellow-400">
+          {/* <IoHomeOutline className="me-1.5 text-skin-base text-15px" /> */}
           {t('breadcrumb-home')}
         </a>
       </ActiveLink>
@@ -86,7 +86,7 @@ const Breadcrumb: React.FC<{ separator?: string }> = ({
           activeClassName="font-semibold text-heading"
           key={breadcrumb.href}
         >
-          <a className="capitalize">
+          <a className="capitalize text-white">
             {convertBreadcrumbTitle(breadcrumb.breadcrumb)}
           </a>
         </ActiveLink>

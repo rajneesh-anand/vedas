@@ -159,8 +159,12 @@ const ContactForm: React.FC = () => {
       <form onSubmit={handleSubmit(onSubmit)} noValidate className="w-full">
         <div className="flex flex-wrap -mx-3 mb-6 justify-center">
           <img
-            className="inline object-cover w-32 h-32 mr-2 border-black rounded-full overflow-hidden border"
-            src={profilePhoto ? URL.createObjectURL(profilePhoto) : '/logo.svg'}
+            className="inline object-cover w-32 h-32 mr-2  rounded-full overflow-hidden border"
+            src={
+              profilePhoto
+                ? URL.createObjectURL(profilePhoto)
+                : '/images/default-profile.svg'
+            }
             alt="Profile Photo"
           />
         </div>
@@ -173,12 +177,10 @@ const ContactForm: React.FC = () => {
             />
             <div
               className={
-                'w-full px-6 py-2 border rounded border-solid border-gray-900 bg-gray-200 '
+                'w-full px-6 py-2 border cursor-pointer border-solid border-gray-900 bg-gray-100 '
               }
             >
-              <p className="text-center text-[12px] text-semibold uppercase">
-                Choose Your Photo{' '}
-              </p>
+              <p className="text-center text-[14px]  ">Choose Your Photo </p>
             </div>
           </div>
         </div>

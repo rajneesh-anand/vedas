@@ -1,4 +1,4 @@
-import Layout from '@components/layout/layout';
+import Layout from '@components/layout';
 import AddressGrid from '@components/address/address-grid';
 import { useAddressQuery } from '@framework/address/address';
 

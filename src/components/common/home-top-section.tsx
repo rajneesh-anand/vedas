@@ -8,6 +8,7 @@ import {
   BsCheckCircleFill,
   BsArrowRight,
 } from 'react-icons/bs';
+import Countdown from '@components/common/countdown';
 
 const data = {
   title: 'app-heading',
@@ -38,6 +39,9 @@ interface Props {
 }
 
 const HomeTopSection: React.FC<Props> = ({ className = 'pt-1.5 md:pt-0' }) => {
+  let promotionEndDate = new Date('04/01/2022'); // mm/dd/yyyy
+  let timeDiff = Math.abs(promotionEndDate.getTime() - new Date().getTime()); // In Milli Seconds
+
   const { appButtons, title, description, appImage } = data;
   const { t } = useTranslation('common');
   return (
@@ -69,7 +73,7 @@ const HomeTopSection: React.FC<Props> = ({ className = 'pt-1.5 md:pt-0' }) => {
               "
             </h2>
 
-            <ul className="flex justify-center mb-4">
+            {/* <ul className="flex justify-center mb-4">
               <li className="inline-block">
                 <div
                   className={'flex flex-row p-1 items-center justify-between'}
@@ -103,19 +107,20 @@ const HomeTopSection: React.FC<Props> = ({ className = 'pt-1.5 md:pt-0' }) => {
                   <p className="text-sm font-semibold">Best Curriculum</p>
                 </div>
               </li>
-            </ul>
-            <div className="flex justify-center  space-s-2 md:space-s-2.5 pt-0.5 px-7 sm:px-0">
-              <Link href="/enrollment">
-                <a className="bg-blue-500 transition duration-200 ease-in hover:box-shadow hover:bg-blue-700 text-white py-2 px-8 rounded-full inline-flex items-center">
-                  Enroll Now
-                  <span>
-                    <BsArrowRight
-                      className="w-9 h-9 xs:w-12 xs:h-12 text-skin-base text-white px-2"
-                      aria-hidden="true"
-                    />
-                  </span>
-                </a>
-              </Link>
+            </ul> */}
+            <div className="text-center mb-4 p-6">
+              <p className="mr-4 text-indigo-700 text-[16px]">
+                Join VedusOne Academy before new academic session &amp; Get 50%
+                discount in Tuition Fee
+              </p>
+            </div>
+            <div className="flex justify-center items-center ">
+              <p className="mr-4 text-red-700 text-[14px]">
+                New Academic Session Starts In{' '}
+              </p>
+              <div className="bg-green-600 rounded">
+                <Countdown date={Date.now() + timeDiff} />
+              </div>
             </div>
           </div>
         </div>

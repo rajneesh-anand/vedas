@@ -9,7 +9,7 @@ type HighlightedBarProps = {
 
 const variantBasedClasses = {
   dark: 'bg-gray-800',
-  primary: 'bg-skin-primary',
+  primary: 'bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500',
   highlighted: 'bg-skin-highlighted',
   highlightedTwo: 'bg-skin-yellow-three',
 };

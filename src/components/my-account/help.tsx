@@ -1,4 +1,4 @@
-import Layout from '@components/layout/layout';
+import Layout from '@components/layout';
 import Heading from '@components/ui/heading';
 import { useTranslation } from 'next-i18next';
 

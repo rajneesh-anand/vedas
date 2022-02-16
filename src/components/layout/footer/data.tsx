@@ -7,22 +7,18 @@ export const footer = {
         {
           id: 1,
           title: 'link-about-us',
-          path: '/about-us',
+          path: '/about',
         },
         {
           id: 2,
           title: 'link-contact-us',
-          path: '/contact-us',
+          path: '/contact',
         },
+
         {
           id: 3,
-          title: 'link-about-team',
-          path: '/about-us',
-        },
-        {
-          id: 4,
           title: 'link-customer-support',
-          path: '/contact-us',
+          path: '/support',
         },
       ],
     },
@@ -45,11 +41,6 @@ export const footer = {
           title: 'link-return-policy',
           path: '/privacy',
         },
-        {
-          id: 4,
-          title: 'link-site-map',
-          path: '/',
-        },
       ],
     },
     {
@@ -66,13 +57,9 @@ export const footer = {
           title: 'link-answer-center',
           path: '/',
         },
+
         {
           id: 3,
-          title: 'link-discussion-boards',
-          path: '/',
-        },
-        {
-          id: 4,
           title: 'link-giving-works',
           path: '/',
         },

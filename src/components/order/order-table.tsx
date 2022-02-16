@@ -37,44 +37,28 @@ export const Status: React.FC<{ item?: any }> = ({ item }) => {
 const columns = [
   {
     title: 'Order Number',
-    dataIndex: 'tracking_number',
-    key: 'tracking_number',
+    dataIndex: 'orderNumber',
+    key: 'orderNumber',
     className: 'id-cell',
   },
   {
     title: 'Order Date',
-    dataIndex: 'created_at',
-    key: 'created_at',
+    dataIndex: 'orderDate',
+    key: 'orderDate',
     render: function createdAt(items: any) {
       return <CreatedAt createdAt={items} />;
     },
   },
   {
-    title: 'Status',
-    key: 'status',
-    render: function status(item: any) {
-      return <Status item={item} />;
-    },
+    title: 'Order Type',
+    dataIndex: 'orderType',
+    key: 'orderType',
   },
+
   {
-    title: 'Delivery Time',
-    dataIndex: 'delivery_time',
-    key: 'delivery_time',
-  },
-  {
-    title: 'Total Price',
-    key: 'total',
-    render: function totalPrice(items: any) {
-      return <TotalPrice items={items} />;
-    },
-  },
-  {
-    dataIndex: '',
-    key: 'operations',
-    render: function actionsButton(item: any) {
-      return <ActionsButton item={item} />;
-    },
-    className: 'operations-cell',
+    title: 'Amount',
+    dataIndex: 'amount',
+    key: 'amount',
   },
 ];
 
@@ -116,7 +100,7 @@ const OrderTable: React.FC<{ orders?: any }> = ({ orders }) => {
         <h2 className="font-semibold text-sm md:text-xl text-skin-base mb-4 md:mb-0">
           My order list
         </h2>
-        <form onSubmit={onSubmitHandle} className="relative">
+        {/* <form onSubmit={onSubmitHandle} className="relative">
           <span className="absolute end-3 top-[80%] transform -translate-y-1/2 order-icon-color">
             <BsSearch size={19} />
           </span>
@@ -128,7 +112,7 @@ const OrderTable: React.FC<{ orders?: any }> = ({ orders }) => {
             placeholder="Search Order list"
             inputClassName=" h-[46px] w-full placeholder-[rgba(0, 0, 0, .3)] bg-white border border-[#E3E8EC] rounded-md order-search focus:border-2 focus:outline-none focus:border-skin-primary"
           />
-        </form>
+        </form> */}
       </div>
       <div className="order-list-table-wraper">
         <Table

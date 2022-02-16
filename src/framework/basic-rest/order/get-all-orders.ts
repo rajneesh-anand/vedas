@@ -5,7 +5,10 @@ import { useQuery } from 'react-query';
 
 const fetchOrders = async ({ queryKey }: any) => {
   const [_key, _params] = queryKey;
-  const { data } = await http.get(API_ENDPOINTS.ORDERS);
+  const res = await fetch('/api/orders');
+  const result = await res.json();
+  const data = result.data;
+  console.log(data);
   return {
     data: data,
   };

@@ -22,25 +22,21 @@ const PageHeroSection: React.FC<HeaderProps> = ({
   return (
     <div
       className={cn(
-        'flex justify-center md:min-h-[250px] lg:min-h-[288px] py-20 w-full bg-cover bg-no-repeat bg-center page-header-banner',
+        'flex justify-center md:min-h-[250px] lg:min-h-[288px] py-20 w-full bg-cover bg-no-repeat bg-center page-header-banner bg-gradient-to-r from-green-400 to-blue-500',
         {
           'style-variant-white': variant === 'white',
         }
       )}
-      style={{
-        backgroundImage: `url(${
-          width! > 480 ? backgroundThumbnail : mobileBackgroundThumbnail
-        })`,
-      }}
+      // style={{
+      //   backgroundImage: `url(${
+      //     width! > 480 ? backgroundThumbnail : mobileBackgroundThumbnail
+      //   })`,
+      // }}
     >
       <div className="w-full flex flex-col items-center justify-center relative">
         <h2
           className={cn(
-            'text-xl md:text-2xl lg:text-3xl 2xl:text-[40px] font-bold text-center',
-            {
-              'text-skin-base': variant === 'default',
-              'text-skin-inverted': variant === 'white',
-            }
+            'text-xl md:text-2xl lg:text-3xl 2xl:text-[40px] font-bold text-center text-white'
           )}
         >
           <span className="font-manrope block font-bold mb-3 md:mb-4 lg:mb-5 2xl:mb-7 ">

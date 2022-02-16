@@ -21,7 +21,7 @@ export default class CustomDocument extends Document {
       <Html dir={getDirection(locale)}>
         <Head>
           <meta charSet="utf-8" />
-          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 
           <link
             href="/icons/favicon-16x16.png"
