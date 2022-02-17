@@ -5,14 +5,14 @@ const ClassList: React.FC = () => {
     <>
       <div className="relative p-4 sm:p-6 rounded-sm overflow-hidden mb-8">
         <div className="relative">
-          <h1 className="text-md md:text-3xl text-gray-800 font-bold mb-2">
+          <h1 className="text-[14px] md:text-3xl text-gray-800 font-bold mb-2">
             Welcome ! Pick Your Class To
             <span className="text-white text-transparent bg-clip-text bg-blue-500 transition duration-200 ease-in hover:box-shadow hover:bg-blue-700 text-white  px-2 rounded-full ">
               Free Enrollment
             </span>
           </h1>
 
-          <p>
+          <p className="text-center lg:text-start">
             Choose our study plan according to your board and medium of
             education
           </p>

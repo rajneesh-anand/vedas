@@ -159,7 +159,7 @@ export default function RegisterPage() {
         </Container>
       ) : (
         <div className="max-w-[480px] mx-auto mb-12 lg:mb-14 xl:mb-16">
-          <div className="flex flex-wrap bg-skin-fill w-full p-3 shadow-contact  mt-8 relative z-10">
+          <div className="flex flex-wrap bg-skin-fill w-full p-3   mt-8 lg:mt-0 relative z-10">
             <div className="w-full pb-0.5 pt-1.5">
               <form
                 onSubmit={handleSubmit(onSubmit)}
@@ -250,7 +250,7 @@ export default function RegisterPage() {
                   />
                 </div>
 
-                <div className="flex  justify-between">
+                <div className="flex flex-col lg:flex-row">
                   <div className="w-full md:w-1/2  mb-3 ">
                     <Input
                       type="text"
@@ -274,7 +274,7 @@ export default function RegisterPage() {
                           }}
                         >
                           {({ open }) => (
-                            <div className="relative ms-2 lg:ms-0 z-10 min-w-[180px]">
+                            <div className="relative lg:ms-0 z-10 min-w-[180px]">
                               <Listbox.Label className="block text-gray-600 font-semibold text-sm leading-none mb-3 cursor-pointer">
                                 State
                               </Listbox.Label>
@@ -351,8 +351,8 @@ export default function RegisterPage() {
                     />
                   </div>
                 </div>
-                <div className="flex  justify-between">
-                  <div className="w-full md:w-1/2  mb-3 ">
+                <div className="flex flex-col lg:flex-row">
+                  <div className="w-full lg:w-1/2  mb-3 ">
                     <Input
                       type="text"
                       variant="outline"
@@ -368,7 +368,7 @@ export default function RegisterPage() {
                       error={errors.mobile?.message}
                     />
                   </div>
-                  <div className="w-full md:w-1/2  mb-3 lg:ml-[4px]">
+                  <div className="w-full lg:w-1/2  mb-3 lg:ml-[4px]">
                     <Input
                       type="text"
                       variant="outline"

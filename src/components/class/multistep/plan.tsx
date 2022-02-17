@@ -112,13 +112,13 @@ const PlanInfo = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-3xl md:text-4xl font-medium text-indigo mb-4 md:mb-6">
-            Pricing Plans
+            VedusOne Study Plans
           </h1>
           <p className="text-gray-500 xl:mx-12">
-            You have 3 plans to choose from for using FWR blocks. Basic blocks
-            are FREE forever. Other premium blocks are also free. You can use it
-            for your personal or commercial projects. Just don't forget to share
-            our website or give attribution.
+            You have 4 plans to choose. Basic blocks are FREE forever. Other
+            premium blocks are also free. You can use it for your personal or
+            commercial projects. Just don't forget to share our website or give
+            attribution.
           </p>
         </div>
 
@@ -155,12 +155,21 @@ const PlanInfo = () => {
                 </ul>
               </div>
               <div className="mt-6 mb-6 py-4">
-                <button
-                  type="button"
-                  className="bg-gradient-to-r from-green-400  to-blue-500 hover:from-yellow-500  hover:via-pink-500 hover:to-red-500 rounded-full px-6 py-2 text-white"
-                >
-                  Explore Free
-                </button>
+                {!session ? (
+                  <Link
+                    href="/auth/signin"
+                    className="bg-gradient-to-r from-green-400  to-blue-500 hover:from-yellow-500  hover:via-pink-500 hover:to-red-500 rounded-full px-6 py-2 text-white"
+                  >
+                    Explore Free
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    className="bg-gradient-to-r from-green-400  to-blue-500 hover:from-yellow-500  hover:via-pink-500 hover:to-red-500 rounded-full px-6 py-2 text-white"
+                  >
+                    Explore Free
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -275,12 +284,30 @@ const PlanInfo = () => {
                 </ul>
               </div>
               <div className="mt-6 mb-6 py-4">
-                <button
-                  type="button"
-                  className="bg-gradient-to-r hover:from-green-400  hover:to-blue-500 from-yellow-500  via-pink-500 to-red-500 rounded-full px-6 py-2 text-white"
-                >
-                  Buy Now
-                </button>
+                {!session ? (
+                  <Link
+                    href="/auth/signin"
+                    className="bg-gradient-to-r hover:from-green-400  hover:to-blue-500 from-yellow-500  via-pink-500 to-red-500 rounded-full px-6 py-2 text-white"
+                  >
+                    Buy Now
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() =>
+                      handlePayment(
+                        proData?.pricing?.substring(
+                          0,
+                          proData?.pricing?.indexOf('/')
+                        ),
+                        proData?.plan
+                      )
+                    }
+                    className="bg-gradient-to-r hover:from-green-400  hover:to-blue-500 from-yellow-500  via-pink-500 to-red-500 rounded-full px-6 py-2 text-white"
+                  >
+                    Buy Now
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -317,12 +344,21 @@ const PlanInfo = () => {
                 </ul>
               </div>
               <div className="mt-6 mb-6 py-4">
-                <button
-                  type="button"
-                  className="bg-gradient-to-r from-green-400  to-blue-500 hover:from-yellow-500  hover:via-pink-500 hover:to-red-500 rounded-full px-6 py-2 text-white"
-                >
-                  Join Now
-                </button>
+                {!session ? (
+                  <Link
+                    href="/auth/signin"
+                    className="bg-gradient-to-r from-green-400  to-blue-500 hover:from-yellow-500  hover:via-pink-500 hover:to-red-500 rounded-full px-6 py-2 text-white"
+                  >
+                    Visit Academy
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    className="bg-gradient-to-r from-green-400  to-blue-500 hover:from-yellow-500  hover:via-pink-500 hover:to-red-500 rounded-full px-6 py-2 text-white"
+                  >
+                    Visit Academy
+                  </button>
+                )}
               </div>
             </div>
           </div>

@@ -16,6 +16,7 @@ import { FormProvider } from '@contexts/search/plan.context';
 // external
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-whatsapp-widget/dist/index.css';
+import 'node_modules/react-modal-video/scss/modal-video.scss';
 
 // base css file
 import '@styles/scrollbar.css';

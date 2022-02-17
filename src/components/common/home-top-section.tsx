@@ -114,8 +114,8 @@ const HomeTopSection: React.FC<Props> = ({ className = 'pt-1.5 md:pt-0' }) => {
                 discount in Tuition Fee
               </p>
             </div>
-            <div className="flex justify-center items-center ">
-              <p className="mr-4 text-red-700 text-[14px]">
+            <div className="flex flex-col lg:flex-row justify-center items-center ">
+              <p className="lg:mr-4 text-red-700 text-[14px] pb-2 lg:mb-0">
                 New Academic Session Starts In{' '}
               </p>
               <div className="bg-green-600 rounded">

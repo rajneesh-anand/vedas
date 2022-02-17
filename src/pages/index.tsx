@@ -14,6 +14,7 @@ import BannerCard from '@components/cards/banner-card';
 import { bundleDataTwo as bundle } from '@framework/static/bundle';
 import ContactInformation from '@components/contact/contact-information';
 import StudentsInformation from '@components/student/student-information';
+import CourseVideo from '@components/course/get-all-videos';
 import FeatureCarousel from '@components/common/featured-carousel';
 import { GetStaticProps } from 'next';
 import Seo from '@components/seo/seo';
@@ -37,7 +38,7 @@ export default function Home() {
         <ClassList />
         <FeatureCarousel />
         <StudentsInformation className="mb-12 lg:mb-14 xl:mb-16 2xl:mb-20" />
-
+        <CourseVideo />
         <ContactInformation />
       </Container>
     </>
