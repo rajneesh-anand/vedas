@@ -574,3 +574,32 @@
   right: 24px;
   z-index: 999;
 }
+
+.underlineAnchor > a::before {
+  @apply absolute end-0 w-0 bg-skin-primary;
+  content: '';
+  height: 3px;
+  transition: all 0.3s ease-in-out 0s;
+  bottom: -14px;
+}
+
+.underlineAnchor:hover > a::before {
+  @apply w-full end-auto start-0;
+}
+
+.underlinePara > p::before {
+  @apply absolute end-0 w-0 bg-skin-primary;
+  content: '';
+  height: 3px;
+  transition: all 0.3s ease-in-out 0s;
+  bottom: -14px;
+}
+
+.underlinePara:hover > p::before {
+  @apply w-full end-auto start-0;
+}
+
+table .isSelected {
+  background: #10b981 !important;
+  color: white !important;
+}

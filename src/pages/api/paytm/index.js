@@ -7,7 +7,8 @@ import PaytmChecksum from '@paytm/cheksum';
 import https from 'https';
 
 export default async function handler(req, res) {
-  const { name, email, amount, type, board, medium, subjects } = req.body;
+  const { name, email, amount, studentClass, plan, medium, planDetails } =
+    req.body;
 
   var orderDate = new Date();
 
@@ -83,10 +84,10 @@ export default async function handler(req, res) {
           orderNumber: orderId,
           name: name,
           email: email,
-          board: board,
+          class: studentClass,
           medium: medium,
-          subjects: subjects,
-          orderType: type,
+          planType: plan,
+          planDetails: JSON.stringify(planDetails),
           paymentStatus: 'Pending',
         },
       });

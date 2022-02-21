@@ -48,18 +48,18 @@ const PlanInfo = () => {
       const result = await res.json();
 
       const freePlan = result.find((obj: any) => {
-        return obj.plan === 'Free';
+        return obj.plan_type === 'free';
       });
       const basicPlan = result.find((obj: any) => {
-        return obj.plan === 'Basic';
+        return obj.plan_type === 'basic';
       });
 
       const proPlan = result.find((obj: any) => {
-        return obj.plan === 'Pro';
+        return obj.plan_type === 'pro';
       });
 
       const offlinePlan = result.find((obj: any) => {
-        return obj.plan === 'Offline';
+        return obj.plan_type === 'offline';
       });
 
       setPlansData(freePlan);
@@ -124,16 +124,10 @@ const PlanInfo = () => {
 
         <div className="pricing-plans lg:flex lg:-mx-4 mt-6 md:mt-12">
           <div className="pricing-plan-wrap lg:w-1/4 my-4 ">
+            <div className="text-center h-[32px] "></div>
             <div className="pricing-plan border border-solid border-indigo-300 bg-white text-center max-w-sm mx-auto hover:border-2 hover:border-indigo-600 transition-colors duration-300 lg:mr-3">
-              <div className="py-6  px-6 lg:py-4 lg:px-6">
-                <h4 className="font-medium uppercase leading-tight text-2xl mb-2">
-                  {plansData?.plan}
-                </h4>
-              </div>
-              <div className="pricing-amount bg-indigo-200 p-6 transition-colors duration-300">
-                <div className="">
-                  <span className="text-4xl font-semibold">Free</span>
-                </div>
+              <div className="pricing-amount text-2xl font-semibold bg-indigo-200 px-2 py-6 transition-colors duration-300">
+                {plansData.plan_name}
               </div>
               <div className="p-4 lg:p-4 min-h-[300px]">
                 <ul>
@@ -155,45 +149,25 @@ const PlanInfo = () => {
                 </ul>
               </div>
               <div className="mt-6 mb-6 py-4">
-                {!session ? (
-                  <Link
-                    href="/auth/signin"
-                    className="bg-gradient-to-r from-green-400  to-blue-500 hover:from-yellow-500  hover:via-pink-500 hover:to-red-500 rounded-full px-6 py-2 text-white"
-                  >
-                    Explore Free
-                  </Link>
-                ) : (
-                  <button
-                    type="button"
-                    className="bg-gradient-to-r from-green-400  to-blue-500 hover:from-yellow-500  hover:via-pink-500 hover:to-red-500 rounded-full px-6 py-2 text-white"
-                  >
-                    Explore Free
-                  </button>
-                )}
+                <Link
+                  href="/"
+                  className="bg-gradient-to-r from-green-400  to-blue-500 hover:from-yellow-500  hover:via-pink-500 hover:to-red-500 rounded-full px-6 py-2 text-white"
+                >
+                  Explore Free
+                </Link>
               </div>
             </div>
           </div>
 
           <div className="pricing-plan-wrap lg:w-1/4 my-4 ">
-            <div className="pricing-plan border border-solid border-indigo-300 bg-white text-center max-w-sm mx-auto hover:border-2 hover:border-indigo-600 transition-colors duration-300 lg:mr-3">
-              <div className="py-6  px-6 lg:py-4 lg:px-6">
-                <h4 className="font-medium uppercase leading-tight text-2xl mb-2">
-                  {basicData?.plan}
-                </h4>
-              </div>
-              <div className="pricing-amount bg-indigo-200 p-6 transition-colors duration-300">
-                <div className="">
-                  <span className="text-4xl font-semibold">
-                    {basicData?.pricing?.substring(
-                      0,
-                      basicData?.pricing?.indexOf('/')
-                    )}
-                  </span>
-                  /
-                  {basicData?.pricing?.substring(
-                    basicData?.pricing?.indexOf('/') + 1
-                  )}
-                </div>
+            <div className="text-center h-[32px] ">
+              <p className=" rounded-full py-1 w-[100px] text-white text-[10px] font-semibold bg-red-700 ">
+                Most Popular
+              </p>
+            </div>
+            <div className="pricing-plan border border-solid border-indigo-300 bg-white text-center max-w-sm mx-auto hover:border-2 hover:border-indigo-700 transition-colors duration-300 lg:mr-3">
+              <div className="pricing-amount text-2xl font-semibold  bg-indigo-200 px-2 py-6 transition-colors duration-300">
+                {basicData.plan_name}
               </div>
               <div className="p-4 lg:p-4 min-h-[300px]">
                 <ul>
@@ -220,49 +194,29 @@ const PlanInfo = () => {
                     href="/auth/signin"
                     className="bg-gradient-to-r hover:from-green-400  hover:to-blue-500 from-yellow-500  via-pink-500 to-red-500 rounded-full px-6 py-2 text-white"
                   >
-                    Buy Now
+                    Select Plan
                   </Link>
                 ) : (
-                  <button
-                    type="button"
-                    onClick={() =>
-                      handlePayment(
-                        basicData?.pricing?.substring(
-                          0,
-                          basicData?.pricing?.indexOf('/')
-                        ),
-                        basicData?.plan
-                      )
-                    }
+                  <Link
+                    href={`/pricing?type=${basicData?.plan}`}
                     className="bg-gradient-to-r hover:from-green-400  hover:to-blue-500 from-yellow-500  via-pink-500 to-red-500 rounded-full px-6 py-2 text-white"
                   >
-                    Buy Now
-                  </button>
+                    Select Plan
+                  </Link>
                 )}
               </div>
             </div>
           </div>
 
           <div className="pricing-plan-wrap lg:w-1/4 my-4 ">
+            <div className="text-center h-[32px] ">
+              <p className=" rounded-full py-1 w-[100px] text-white text-[10px] font-semibold bg-red-700 ">
+                Most Popular
+              </p>
+            </div>
             <div className="pricing-plan border border-solid border-indigo-300 bg-white text-center max-w-sm mx-auto hover:border-2 hover:border-indigo-600 transition-colors duration-300 lg:mr-3">
-              <div className="py-6  px-6 lg:py-4 lg:px-6">
-                <h4 className="font-medium uppercase leading-tight text-2xl mb-2">
-                  {proData?.plan}
-                </h4>
-              </div>
-              <div className="pricing-amount bg-indigo-200 p-6 transition-colors duration-300">
-                <div className="">
-                  <span className="text-4xl font-semibold">
-                    {proData?.pricing?.substring(
-                      0,
-                      proData?.pricing?.indexOf('/')
-                    )}
-                  </span>
-                  /
-                  {proData?.pricing?.substring(
-                    proData?.pricing?.indexOf('/') + 1
-                  )}
-                </div>
+              <div className="pricing-amount text-2xl font-semibold bg-indigo-200 px-2 py-6 transition-colors duration-300">
+                {proData.plan_name}
               </div>
               <div className="p-4 lg:p-4 min-h-[300px]">
                 <ul>
@@ -289,41 +243,27 @@ const PlanInfo = () => {
                     href="/auth/signin"
                     className="bg-gradient-to-r hover:from-green-400  hover:to-blue-500 from-yellow-500  via-pink-500 to-red-500 rounded-full px-6 py-2 text-white"
                   >
-                    Buy Now
+                    Select Plan
                   </Link>
                 ) : (
-                  <button
-                    type="button"
-                    onClick={() =>
-                      handlePayment(
-                        proData?.pricing?.substring(
-                          0,
-                          proData?.pricing?.indexOf('/')
-                        ),
-                        proData?.plan
-                      )
-                    }
+                  <Link
+                    href={`/pricing?type=${proData?.plan}`}
                     className="bg-gradient-to-r hover:from-green-400  hover:to-blue-500 from-yellow-500  via-pink-500 to-red-500 rounded-full px-6 py-2 text-white"
                   >
-                    Buy Now
-                  </button>
+                    Select Plan
+                  </Link>
                 )}
               </div>
             </div>
           </div>
 
           <div className="pricing-plan-wrap lg:w-1/4 my-4 ">
+            <div className="text-center h-[32px] "></div>
             <div className="pricing-plan border border-solid border-indigo-300 bg-white text-center max-w-sm mx-auto hover:border-2 hover:border-indigo-600 transition-colors duration-300 lg:mr-3">
-              <div className="py-6  px-6 lg:py-4 lg:px-6">
-                <h4 className="font-medium uppercase leading-tight text-2xl mb-2">
-                  {offlineData?.plan}
-                </h4>
+              <div className="pricing-amount text-2xl font-semibold bg-indigo-200 px-2 py-6 transition-colors duration-300">
+                {offlineData.plan_name}
               </div>
-              <div className="pricing-amount bg-indigo-200 p-6 transition-colors duration-300">
-                <div className="">
-                  <span className="text-4xl font-semibold">Offline</span>
-                </div>
-              </div>
+
               <div className="p-4 lg:p-4 min-h-[300px]">
                 <ul>
                   {offlineData?.features?.map((item: any, index: any) => {
@@ -344,21 +284,12 @@ const PlanInfo = () => {
                 </ul>
               </div>
               <div className="mt-6 mb-6 py-4">
-                {!session ? (
-                  <Link
-                    href="/auth/signin"
-                    className="bg-gradient-to-r from-green-400  to-blue-500 hover:from-yellow-500  hover:via-pink-500 hover:to-red-500 rounded-full px-6 py-2 text-white"
-                  >
-                    Visit Academy
-                  </Link>
-                ) : (
-                  <button
-                    type="button"
-                    className="bg-gradient-to-r from-green-400  to-blue-500 hover:from-yellow-500  hover:via-pink-500 hover:to-red-500 rounded-full px-6 py-2 text-white"
-                  >
-                    Visit Academy
-                  </button>
-                )}
+                <Link
+                  href="/contact"
+                  className="bg-gradient-to-r from-green-400  to-blue-500 hover:from-yellow-500  hover:via-pink-500 hover:to-red-500 rounded-full px-6 py-2 text-white"
+                >
+                  Visit Academy
+                </Link>
               </div>
             </div>
           </div>

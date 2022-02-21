@@ -7,7 +7,7 @@ export const fetchStudents = async ({ queryKey }: any) => {
   const [_key, _params] = queryKey;
   const {
     data: { data },
-  } = await axios.get(`${process.env.API_URL}/enrollment`);
+  } = await axios.get(`${process.env.API_URL}/user`);
   return { students: { data: data as Student[] } };
 };
 export const useStudentsQuery = (options: StudentsQueryOptionsType) => {

@@ -48,7 +48,7 @@ const Header: React.FC = () => {
         displayMobileSearch && 'active-mobile-search'
       )}
     >
-      <div className="innerSticky body-font bg-gray-100 w-full h-16 lg:h-20 z-20 transition duration-200 ease-in-out">
+      <div className="innerSticky body-font bg-white w-full h-16 lg:h-20 z-20 transition duration-200 ease-in-out">
         <Container className="flex items-center justify-between h-full w-full">
           <button
             aria-label="Menu"

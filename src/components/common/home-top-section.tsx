@@ -110,8 +110,8 @@ const HomeTopSection: React.FC<Props> = ({ className = 'pt-1.5 md:pt-0' }) => {
             </ul> */}
             <div className="text-center mb-4 p-6">
               <p className="mr-4 text-indigo-700 text-[16px]">
-                Join VedusOne Academy before new academic session &amp; Get 50%
-                discount in Tuition Fee
+                Join VedusOne Academy before new academic session starts &amp;
+                Get 50% discount on tuition fee
               </p>
             </div>
             <div className="flex flex-col lg:flex-row justify-center items-center ">

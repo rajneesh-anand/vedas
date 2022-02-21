@@ -16,7 +16,7 @@ import Seo from '@components/seo/seo';
 import Container from '@components/ui/container';
 import Link from '@components/ui/link';
 import Layout from '@components/layout';
-import { StatesOptions } from '@data/state';
+import { StatesOptions, ClassOptions, MediumOptions } from '@data/state';
 import useWindowSize from '@utils/use-window-size';
 import Alert from '@components/ui/alert';
 
@@ -24,6 +24,8 @@ interface FormValues {
   name: string;
   email: string;
   password: string;
+  class: string;
+  medium: string;
   address: string;
   city: string;
   state: string;
@@ -60,6 +62,8 @@ export default function RegisterPage() {
   const [processing, setProcessing] = useState(false);
   const [status, setStatus] = useState('');
   const [selectedState, setSelectedState] = useState(StatesOptions[0]);
+  const [selectedClass, setSelectedClass] = useState(ClassOptions[0]);
+  const [selectedMedium, setSelectedMedium] = useState(MediumOptions[0]);
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [errorMsg, setErrorMsg] = useState<string | undefined>('');
 
@@ -106,6 +110,8 @@ export default function RegisterPage() {
     formData.append('address', data.address);
     formData.append('city', data.city);
     formData.append('state', data.state ? data.state : StatesOptions[0]);
+    formData.append('class', data.class ? data.class : ClassOptions[0]);
+    formData.append('medium', data.medium ? data.medium : MediumOptions[0]);
     formData.append('mobile', data.mobile);
     formData.append('whatsapp', data.whatsapp);
     formData.append('photo', profilePhoto!);
@@ -235,6 +241,187 @@ export default function RegisterPage() {
                     })}
                     error={errors?.password?.message!}
                   />
+                </div>
+
+                <div className="flex flex-col lg:flex-row">
+                  <div className="w-full md:w-1/2  mb-3 ">
+                    <Controller
+                      name="class"
+                      control={control}
+                      render={({ field: { onChange } }) => (
+                        <Listbox
+                          value={selectedClass}
+                          onChange={(e) => {
+                            onChange(e);
+                            setSelectedClass(e);
+                          }}
+                        >
+                          {({ open }) => (
+                            <div className="relative lg:ms-0 z-10 min-w-[180px]">
+                              <Listbox.Label className="block text-gray-600 font-semibold text-sm leading-none mb-3 cursor-pointer">
+                                Class
+                              </Listbox.Label>
+
+                              <Listbox.Button className="border border-gray-300  text-heading text-[13px] md:text-sm font-semibold  relative w-full py-2 ps-3 pe-10 text-start bg-white  shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm cursor-pointer ">
+                                <span className="block truncate">
+                                  {selectedClass}
+                                </span>
+                                <span className="absolute inset-y-0 end-0 flex items-center pe-2 pointer-events-none">
+                                  <HiOutlineSelector
+                                    className="w-5 h-5 text-gray-400"
+                                    aria-hidden="true"
+                                  />
+                                </span>
+                              </Listbox.Button>
+                              <Transition
+                                show={open}
+                                as={Fragment}
+                                leave="transition ease-in duration-100"
+                                leaveFrom="opacity-100"
+                                leaveTo="opacity-0"
+                              >
+                                <Listbox.Options
+                                  static
+                                  className="absolute w-full py-1 mt-1 overflow-auto bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none text-sm"
+                                >
+                                  {ClassOptions?.map((option, idx) => (
+                                    <Listbox.Option
+                                      key={idx}
+                                      className={({ active }) =>
+                                        `${
+                                          active
+                                            ? 'text-amber-900 bg-gray-100'
+                                            : 'text-gray-900'
+                                        }
+                          cursor-default select-none relative py-2 ps-10 pe-4`
+                                      }
+                                      value={option}
+                                    >
+                                      {({ selected, active }) => (
+                                        <>
+                                          <span
+                                            className={`${
+                                              selected
+                                                ? 'font-medium'
+                                                : 'font-normal'
+                                            } block truncate`}
+                                          >
+                                            {option}
+                                          </span>
+                                          {selected ? (
+                                            <span
+                                              className={`${
+                                                active ? 'text-amber-600' : ''
+                                              }
+                                check-icon absolute inset-y-0 start-0 flex items-center ps-3`}
+                                            >
+                                              <HiCheck
+                                                className="w-5 h-5"
+                                                aria-hidden="true"
+                                              />
+                                            </span>
+                                          ) : null}
+                                        </>
+                                      )}
+                                    </Listbox.Option>
+                                  ))}
+                                </Listbox.Options>
+                              </Transition>
+                            </div>
+                          )}
+                        </Listbox>
+                      )}
+                    />
+                  </div>
+                  <div className="w-full md:w-1/2  mb-3 lg:ml-[4px]">
+                    <Controller
+                      name="medium"
+                      control={control}
+                      render={({ field: { onChange } }) => (
+                        <Listbox
+                          value={selectedMedium}
+                          onChange={(e) => {
+                            onChange(e);
+                            setSelectedMedium(e);
+                          }}
+                        >
+                          {({ open }) => (
+                            <div className="relative lg:ms-0 z-10 min-w-[180px]">
+                              <Listbox.Label className="block text-gray-600 font-semibold text-sm leading-none mb-3 cursor-pointer">
+                                Medium
+                              </Listbox.Label>
+
+                              <Listbox.Button className="border border-gray-300  text-heading text-[13px] md:text-sm font-semibold  relative w-full py-2 ps-3 pe-10 text-start bg-white  shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm cursor-pointer ">
+                                <span className="block truncate">
+                                  {selectedMedium}
+                                </span>
+                                <span className="absolute inset-y-0 end-0 flex items-center pe-2 pointer-events-none">
+                                  <HiOutlineSelector
+                                    className="w-5 h-5 text-gray-400"
+                                    aria-hidden="true"
+                                  />
+                                </span>
+                              </Listbox.Button>
+                              <Transition
+                                show={open}
+                                as={Fragment}
+                                leave="transition ease-in duration-100"
+                                leaveFrom="opacity-100"
+                                leaveTo="opacity-0"
+                              >
+                                <Listbox.Options
+                                  static
+                                  className="absolute w-full py-1 mt-1 overflow-auto bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none text-sm"
+                                >
+                                  {MediumOptions?.map((option, idx) => (
+                                    <Listbox.Option
+                                      key={idx}
+                                      className={({ active }) =>
+                                        `${
+                                          active
+                                            ? 'text-amber-900 bg-gray-100'
+                                            : 'text-gray-900'
+                                        }
+                          cursor-default select-none relative py-2 ps-10 pe-4`
+                                      }
+                                      value={option}
+                                    >
+                                      {({ selected, active }) => (
+                                        <>
+                                          <span
+                                            className={`${
+                                              selected
+                                                ? 'font-medium'
+                                                : 'font-normal'
+                                            } block truncate`}
+                                          >
+                                            {option}
+                                          </span>
+                                          {selected ? (
+                                            <span
+                                              className={`${
+                                                active ? 'text-amber-600' : ''
+                                              }
+                                check-icon absolute inset-y-0 start-0 flex items-center ps-3`}
+                                            >
+                                              <HiCheck
+                                                className="w-5 h-5"
+                                                aria-hidden="true"
+                                              />
+                                            </span>
+                                          ) : null}
+                                        </>
+                                      )}
+                                    </Listbox.Option>
+                                  ))}
+                                </Listbox.Options>
+                              </Transition>
+                            </div>
+                          )}
+                        </Listbox>
+                      )}
+                    />
+                  </div>
                 </div>
 
                 <div className="w-full mb-3 ">

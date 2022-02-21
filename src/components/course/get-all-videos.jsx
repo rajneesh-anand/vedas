@@ -1,36 +1,37 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { useFormData } from '@contexts/search/plan.context';
 import { FaPlayCircle } from 'react-icons/fa';
+import { MdOutlineFilterList } from 'react-icons/md';
 import { useSession } from 'next-auth/react';
 import Link from '@components/ui/link';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import { HiOutlineSelector, HiCheck } from 'react-icons/hi';
 import { Listbox, Transition } from '@headlessui/react';
-import Image from 'next/image';
 
 const ModalVideo = dynamic(() => import('react-modal-video'), {
   ssr: false,
 });
 
 const ClassOptions = [
-  'CLASS VI',
-  'CLASS VII',
-  'CLASS VIII',
-  'CLASS IX',
-  'CLASS X',
-  'CLASS XI',
-  'CLASS XII',
+  { value: 'six', name: 'CLASS VI' },
+  { value: 'seven', name: 'CLASS VII' },
+  { value: 'eight', name: 'CLASS VIII' },
+  { value: 'nine', name: 'CLASS IX' },
+  { value: 'ten', name: 'CLASS X' },
+  { value: 'eleven', name: 'CLASS XI' },
+  { value: 'twelve', name: 'CLASS XII' },
 ];
+const MediumOptions = ['ENGLISH MEDIUM', 'HINDI MEDIUM'];
 
 const CourseVideo = () => {
-  const router = useRouter();
   const { data: session, status } = useSession();
   const [videoData, setVideoData] = useState([]);
   const [isOpen, setIsOpen] = useState(true);
   const [videoUrl, setVideoUrl] = useState([]);
   const [subjectMedia, setMedia] = useState([]);
   const [selectedClass, setSelectedClass] = useState(ClassOptions[0]);
+  const [selectedMedium, setSelectedMedium] = useState(MediumOptions[0]);
 
   const openModal = (url) => {
     setVideoUrl(url.split('?v='));
@@ -39,139 +40,270 @@ const CourseVideo = () => {
 
   const setSubjectMedia = (subject) => {
     const filteredSubject = videoData.filter((sub) => sub.subject === subject);
-
     setMedia(filteredSubject);
+  };
+
+  const handelChange = (value) => {
+    const classFilter = ClassOptions.find((item) => item.value === value);
+    setSelectedClass(classFilter);
   };
 
   useEffect(async () => {
     let res;
     let result;
-    switch (selectedClass) {
-      case 'CLASS VI':
-        res = await fetch(`${process.env.API_URL}/class/six`);
+    let searchText = `${selectedClass.name}-${selectedMedium}`;
+
+    switch (searchText) {
+      case 'CLASS VI-ENGLISH MEDIUM':
+        res = await fetch(`${process.env.API_URL}/class/six/english`);
         result = await res.json();
         setVideoData(result);
         setMedia(result);
         break;
-      case 'CLASS VII':
-        res = await fetch(`${process.env.API_URL}/class/seven`);
+      case 'CLASS VI-HINDI MEDIUM':
+        res = await fetch(`${process.env.API_URL}/class/six/hindi`);
         result = await res.json();
         setVideoData(result);
         setMedia(result);
         break;
-      case 'CLASS VIII':
-        res = await fetch(`${process.env.API_URL}/class/eight`);
+      case 'CLASS VII-ENGLISH MEDIUM':
+        res = await fetch(`${process.env.API_URL}/class/seven/english`);
         result = await res.json();
         setVideoData(result);
         setMedia(result);
         break;
-      case 'CLASS IX':
-        res = await fetch(`${process.env.API_URL}/class/nine`);
+      case 'CLASS VII-HINDI MEDIUM':
+        res = await fetch(`${process.env.API_URL}/class/seven/hindi`);
+        result = await res.json();
+        setVideoData(result);
+        setMedia(result);
+        break;
+      case 'CLASS VIII-ENGLISH MEDIUM':
+        res = await fetch(`${process.env.API_URL}/class/eight/english`);
+        result = await res.json();
+        setVideoData(result);
+        setMedia(result);
+        break;
+      case 'CLASS VIII-HINDI MEDIUM':
+        res = await fetch(`${process.env.API_URL}/class/eight/hindi`);
+        result = await res.json();
+        setVideoData(result);
+        setMedia(result);
+        break;
+      case 'CLASS IX-ENGLISH MEDIUM':
+        res = await fetch(`${process.env.API_URL}/class/nine/english`);
+        result = await res.json();
+        setVideoData(result);
+        setMedia(result);
+        break;
+      case 'CLASS IX-HINDI MEDIUM':
+        res = await fetch(`${process.env.API_URL}/class/nine/hindi`);
         result = await res.json();
         setVideoData(result);
         setMedia(result);
         break;
 
-      case 'CLASS X':
-        res = await fetch(`${process.env.API_URL}/class/ten`);
+      case 'CLASS X-ENGLISH MEDIUM':
+        res = await fetch(`${process.env.API_URL}/class/ten/english`);
         result = await res.json();
         setVideoData(result);
         setMedia(result);
         break;
-      case 'CLASS XI':
-        res = await fetch(`${process.env.API_URL}/class/eleven`);
+      case 'CLASS X-HINDI MEDIUM':
+        res = await fetch(`${process.env.API_URL}/class/ten/hindi`);
         result = await res.json();
         setVideoData(result);
         setMedia(result);
         break;
-      case 'CLASS XII':
-        res = await fetch(`${process.env.API_URL}/class/twelve`);
+      case 'CLASS XI-ENGLISH MEDIUM':
+        res = await fetch(`${process.env.API_URL}/class/eleven/english`);
+        result = await res.json();
+        setVideoData(result);
+        setMedia(result);
+        break;
+      case 'CLASS XI-HINDI MEDIUM':
+        res = await fetch(`${process.env.API_URL}/class/eleven/hindi`);
+        result = await res.json();
+        setVideoData(result);
+        setMedia(result);
+        break;
+      case 'CLASS XII-ENGLISH MEDIUM':
+        res = await fetch(`${process.env.API_URL}/class/twelve/english`);
+        result = await res.json();
+        setVideoData(result);
+        setMedia(result);
+        break;
+      case 'CLASS XII-HINDI MEDIUM':
+        res = await fetch(`${process.env.API_URL}/class/twelve/hindi`);
         result = await res.json();
         setVideoData(result);
         setMedia(result);
         break;
       default:
-        res = await fetch(`${process.env.API_URL}/class/mix`);
+        res = await fetch(`${process.env.API_URL}/class/six/english`);
         result = await res.json();
         setVideoData(result);
+        setMedia(result);
     }
-  }, [selectedClass]);
+  }, [selectedClass, selectedMedium]);
 
   return (
     <>
-      <div
-        className="pt-24 pb-16 bg-gradient-to-r from-blue-100  to-green-100"
-        // style={{
-        //   backgroundImage: `url(${process.env.PUBLIC_URL}/images/background.svg)`,
-        // }}
-      >
-        {/* <div className="relative w-full h-[320px] mb-4">
-          <Image
-            src="/images/subjects.jpg"
-            alt="subject"
-            loading="lazy"
-            layout="fill"
-            objectFit="contain"
-          />
-        </div> */}
-        <p className="mb-10 text-center">SELECT YOUR CLASS</p>
-        <div className="w-72 my-0 mx-auto ">
-          <Listbox value={selectedClass} onChange={setSelectedClass}>
-            <div className="relative mt-1">
-              <Listbox.Button className="border border-gray-200 rounded text-heading text-[13px] md:text-sm font-semibold  relative w-full py-2 ps-3 pe-10 text-start bg-white  shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm cursor-pointer ">
-                <span className="block truncate">{selectedClass}</span>
-                <span className="absolute inset-y-0 end-0 flex items-center pe-2 pointer-events-none">
-                  <HiOutlineSelector
-                    className="w-5 h-5 text-gray-400"
-                    aria-hidden="true"
-                  />
-                </span>
-              </Listbox.Button>
-              <Transition
-                as={Fragment}
-                leave="transition ease-in duration-100"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
+      <div className="pt-24 pb-16">
+        <div className="relative mb-8">
+          <div className="inline-flex items-center underlineAnchor ">
+            <h1 className="text-[14px] md:text-3xl text-gray-800 font-bold mb-2 ">
+              To avail our study material and sample papers
+            </h1>
+            <Link
+              href={`/plans?class=${selectedClass.value}`}
+              className="relative text-[14px] md:text-3xl font-bold text-white text-transparent bg-clip-text bg-blue-500  px-2 mb-2"
+            >
+              Buy our study plan
+            </Link>
+          </div>
+
+          <p className="text-center lg:text-start">
+            Choose our study plans according to your academic board and medium
+            of education
+          </p>
+        </div>
+
+        <div className="flex flex-wrap justify-between items-center flex-col lg:flex-row pb-2 border-b">
+          <div className="inline-flex items-center text-blue-700">
+            <MdOutlineFilterList size={22} />
+            <p className="pl-2">Filter Videos</p>
+          </div>
+          <div className="flex flex-wrap justify-between flex-col lg:flex-row">
+            <div className="w-full lg:w-40 lg:mr-4">
+              <Listbox
+                value={selectedClass.value}
+                onChange={(event) => {
+                  handelChange(event);
+                }}
               >
-                <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                  {ClassOptions?.map((option, idx) => (
-                    <Listbox.Option
-                      key={idx}
-                      className={({ active }) =>
-                        `${
-                          active
-                            ? 'text-amber-900 bg-gray-100'
-                            : 'text-gray-900'
-                        }
+                <div className="relative mt-1">
+                  <Listbox.Button className="border text-blue-700  text-heading text-[13px] md:text-sm font-semibold  relative w-full py-2 ps-3 pe-10 text-start bg-white  shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm cursor-pointer ">
+                    <span className="block truncate">{selectedClass.name}</span>
+                    <span className="absolute inset-y-0 end-0 flex items-center pe-2 pointer-events-none">
+                      <HiOutlineSelector
+                        className="w-5 h-5 text-gray-400"
+                        aria-hidden="true"
+                      />
+                    </span>
+                  </Listbox.Button>
+                  <Transition
+                    as={Fragment}
+                    leave="transition ease-in duration-100"
+                    leaveFrom="opacity-100"
+                    leaveTo="opacity-0"
+                  >
+                    <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                      {ClassOptions?.map((option, idx) => (
+                        <Listbox.Option
+                          key={idx}
+                          className={({ active }) =>
+                            `${
+                              active
+                                ? 'text-amber-900 bg-gray-100'
+                                : 'text-gray-900'
+                            }
                           cursor-default select-none relative py-2 ps-10 pe-4`
-                      }
-                      value={option}
-                    >
-                      {({ selected, active }) => (
-                        <>
-                          <span
-                            className={`${
-                              selected ? 'font-medium' : 'font-normal'
-                            } block truncate`}
-                          >
-                            {option}
-                          </span>
-                          {selected ? (
-                            <span
-                              className={`${active ? 'text-amber-600' : ''}
+                          }
+                          value={option.value}
+                        >
+                          {({ selected, active }) => (
+                            <>
+                              <span
+                                className={`${
+                                  selected ? 'font-medium' : 'font-normal'
+                                } block truncate`}
+                              >
+                                {option.name}
+                              </span>
+                              {selected ? (
+                                <span
+                                  className={`${active ? 'text-amber-600' : ''}
                                 check-icon absolute inset-y-0 start-0 flex items-center ps-3`}
-                            >
-                              <HiCheck className="w-5 h-5" aria-hidden="true" />
-                            </span>
-                          ) : null}
-                        </>
-                      )}
-                    </Listbox.Option>
-                  ))}
-                </Listbox.Options>
-              </Transition>
+                                >
+                                  <HiCheck
+                                    className="w-5 h-5"
+                                    aria-hidden="true"
+                                  />
+                                </span>
+                              ) : null}
+                            </>
+                          )}
+                        </Listbox.Option>
+                      ))}
+                    </Listbox.Options>
+                  </Transition>
+                </div>
+              </Listbox>
             </div>
-          </Listbox>
+
+            <div className="w-full lg:w-48">
+              <Listbox value={selectedMedium} onChange={setSelectedMedium}>
+                <div className="relative mt-1">
+                  <Listbox.Button className="border text-blue-700 text-heading text-[13px] md:text-sm font-semibold  relative w-full py-2 ps-3 pe-10 text-start bg-white  shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm cursor-pointer ">
+                    <span className="block truncate">{selectedMedium}</span>
+                    <span className="absolute inset-y-0 end-0 flex items-center pe-2 pointer-events-none">
+                      <HiOutlineSelector
+                        className="w-5 h-5 text-gray-400"
+                        aria-hidden="true"
+                      />
+                    </span>
+                  </Listbox.Button>
+                  <Transition
+                    as={Fragment}
+                    leave="transition ease-in duration-100"
+                    leaveFrom="opacity-100"
+                    leaveTo="opacity-0"
+                  >
+                    <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                      {MediumOptions?.map((option, idx) => (
+                        <Listbox.Option
+                          key={idx}
+                          className={({ active }) =>
+                            `${
+                              active
+                                ? 'text-amber-900 bg-gray-100'
+                                : 'text-gray-900'
+                            }
+                          cursor-default select-none relative py-2 ps-10 pe-4`
+                          }
+                          value={option}
+                        >
+                          {({ selected, active }) => (
+                            <>
+                              <span
+                                className={`${
+                                  selected ? 'font-medium' : 'font-normal'
+                                } block truncate`}
+                              >
+                                {option}
+                              </span>
+                              {selected ? (
+                                <span
+                                  className={`${active ? 'text-amber-600' : ''}
+                                check-icon absolute inset-y-0 start-0 flex items-center ps-3`}
+                                >
+                                  <HiCheck
+                                    className="w-5 h-5"
+                                    aria-hidden="true"
+                                  />
+                                </span>
+                              ) : null}
+                            </>
+                          )}
+                        </Listbox.Option>
+                      ))}
+                    </Listbox.Options>
+                  </Transition>
+                </div>
+              </Listbox>
+            </div>
+          </div>
         </div>
 
         <div className="flex flex-wrap py-6 justify-center overflow-hidden">

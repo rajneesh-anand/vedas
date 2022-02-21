@@ -34,7 +34,7 @@ const StudentsGridBlock: React.FC<ProductsProps> = ({
         sectionSubHeading={sectionSubHeading}
         headingPosition={headingPosition}
       />
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7 gap-3 md:gap-4 2xl:gap-5">
+      <div className="flex flex-wrap justify-center mb-6">
         {error ? (
           <Alert message={error} className="col-span-full" />
         ) : loading && !students?.length ? (
@@ -45,8 +45,10 @@ const StudentsGridBlock: React.FC<ProductsProps> = ({
             />
           ))
         ) : (
-          students?.map((student: any) => (
-            <StudentCard key={`${uniqueKey}-${student.id}`} student={student} />
+          students?.map((student: any, index) => (
+            <div className="w-1/2 lg:w-1/5 " key={index}>
+              <StudentCard student={student} />
+            </div>
           ))
         )}
       </div>

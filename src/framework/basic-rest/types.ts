@@ -153,7 +153,7 @@ export type Shop = {
 
 export type Student = {
   id: number | string;
-  firstName: string;
+  name: string;
   lastName: string;
   address: string;
   city: string;
