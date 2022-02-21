@@ -4,6 +4,7 @@ import { BsCheck2Square } from 'react-icons/bs';
 import { useSession } from 'next-auth/react';
 import Link from '@components/ui/link';
 import { useRouter } from 'next/router';
+import { slugify } from '@utils/helper';
 
 interface paytmObject {
   mid: string;
@@ -198,7 +199,7 @@ const PlanInfo = () => {
                   </Link>
                 ) : (
                   <Link
-                    href={`/pricing?type=${basicData?.plan}`}
+                    href={`/pricing?type=${slugify(basicData?.plan_name)}`}
                     className="bg-gradient-to-r hover:from-green-400  hover:to-blue-500 from-yellow-500  via-pink-500 to-red-500 rounded-full px-6 py-2 text-white"
                   >
                     Select Plan
@@ -247,7 +248,7 @@ const PlanInfo = () => {
                   </Link>
                 ) : (
                   <Link
-                    href={`/pricing?type=${proData?.plan}`}
+                    href={`/pricing?type=${slugify(proData?.plan_name)}`}
                     className="bg-gradient-to-r hover:from-green-400  hover:to-blue-500 from-yellow-500  via-pink-500 to-red-500 rounded-full px-6 py-2 text-white"
                   >
                     Select Plan
