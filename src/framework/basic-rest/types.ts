@@ -162,7 +162,7 @@ export type Student = {
   contact: string;
   email?: string;
   schoolName?: string;
-  photo?: string;
+  image?: string;
   class: string;
   stream: string;
   message: string;

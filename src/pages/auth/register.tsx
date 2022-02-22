@@ -19,6 +19,7 @@ import Layout from '@components/layout';
 import { StatesOptions, ClassOptions, MediumOptions } from '@data/state';
 import useWindowSize from '@utils/use-window-size';
 import Alert from '@components/ui/alert';
+import HeroIcon from '@components/icons/hero';
 
 interface FormValues {
   name: string;
@@ -164,432 +165,451 @@ export default function RegisterPage() {
           </div>
         </Container>
       ) : (
-        <div className="max-w-[480px] mx-auto mb-12 lg:mb-14 xl:mb-16">
-          <div className="flex flex-wrap bg-skin-fill w-full p-3   mt-8 lg:mt-0 relative z-10">
-            <div className="w-full pb-0.5 pt-1.5">
-              <form
-                onSubmit={handleSubmit(onSubmit)}
-                noValidate
-                className="w-full"
-              >
-                <div className="text-center mb-3">
-                  <img
-                    className="inline object-cover w-28 h-28  rounded-full overflow-hidden border"
-                    src={
-                      profilePhoto
-                        ? URL.createObjectURL(profilePhoto)
-                        : '/images/default-profile.svg'
-                    }
-                    alt="Profile Photo"
-                  />
-                </div>
-
-                <div {...getRootProps()}>
-                  <input
-                    className="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    {...getInputProps()}
-                  />
-                  <div className="flex justify-center">
-                    <div className="w-[184px] px-6 py-2 border cursor-pointer border-dashed border-gray-900 bg-gray-100 ">
-                      <p className=" text-[12px] uppercase ">
-                        Choose Your Photo{' '}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="w-full mb-3">
-                  <Input
-                    variant="outline"
-                    type="text"
-                    label="Full Name"
-                    placeholder="Enter your full name"
-                    {...register('name', {
-                      required: 'You must provide your full name !',
-                    })}
-                    error={errors.name?.message}
-                  />
-                </div>
-                <div className="w-full mb-3 ">
-                  <Input
-                    type="email"
-                    variant="outline"
-                    label="Email Address "
-                    placeholder="Enter your email address"
-                    {...register('email', {
-                      required: 'You must provide your email address !',
-                      pattern: {
-                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                        message: 'Invalid email address !',
-                      },
-                    })}
-                    error={errors.email?.message}
-                  />
-                </div>
-                <div className="w-full mb-3 ">
-                  <PasswordInput
-                    label="Password"
-                    variant="outline"
-                    placeholder="Set Password"
-                    helperText="[ minimum 8 characters ] "
-                    {...register('password', {
-                      required: 'You must set password !',
-                      pattern: {
-                        value: /^(?=.*).{8,}$/,
-                        message: 'Invalid Password  !',
-                      },
-                    })}
-                    error={errors?.password?.message!}
-                  />
-                </div>
-
-                <div className="flex flex-col lg:flex-row">
-                  <div className="w-full md:w-1/2  mb-3 ">
-                    <Controller
-                      name="class"
-                      control={control}
-                      render={({ field: { onChange } }) => (
-                        <Listbox
-                          value={selectedClass}
-                          onChange={(e) => {
-                            onChange(e);
-                            setSelectedClass(e);
-                          }}
-                        >
-                          {({ open }) => (
-                            <div className="relative lg:ms-0 z-10 min-w-[180px]">
-                              <Listbox.Label className="block text-gray-600 font-semibold text-sm leading-none mb-3 cursor-pointer">
-                                Class
-                              </Listbox.Label>
-
-                              <Listbox.Button className="border border-gray-300  text-heading text-[13px] md:text-sm font-semibold  relative w-full py-2 ps-3 pe-10 text-start bg-white  shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm cursor-pointer ">
-                                <span className="block truncate">
-                                  {selectedClass}
-                                </span>
-                                <span className="absolute inset-y-0 end-0 flex items-center pe-2 pointer-events-none">
-                                  <HiOutlineSelector
-                                    className="w-5 h-5 text-gray-400"
-                                    aria-hidden="true"
-                                  />
-                                </span>
-                              </Listbox.Button>
-                              <Transition
-                                show={open}
-                                as={Fragment}
-                                leave="transition ease-in duration-100"
-                                leaveFrom="opacity-100"
-                                leaveTo="opacity-0"
-                              >
-                                <Listbox.Options
-                                  static
-                                  className="absolute w-full py-1 mt-1 overflow-auto bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none text-sm"
-                                >
-                                  {ClassOptions?.map((option, idx) => (
-                                    <Listbox.Option
-                                      key={idx}
-                                      className={({ active }) =>
-                                        `${
-                                          active
-                                            ? 'text-amber-900 bg-gray-100'
-                                            : 'text-gray-900'
-                                        }
-                          cursor-default select-none relative py-2 ps-10 pe-4`
-                                      }
-                                      value={option}
-                                    >
-                                      {({ selected, active }) => (
-                                        <>
-                                          <span
-                                            className={`${
-                                              selected
-                                                ? 'font-medium'
-                                                : 'font-normal'
-                                            } block truncate`}
-                                          >
-                                            {option}
-                                          </span>
-                                          {selected ? (
-                                            <span
-                                              className={`${
-                                                active ? 'text-amber-600' : ''
-                                              }
-                                check-icon absolute inset-y-0 start-0 flex items-center ps-3`}
-                                            >
-                                              <HiCheck
-                                                className="w-5 h-5"
-                                                aria-hidden="true"
-                                              />
-                                            </span>
-                                          ) : null}
-                                        </>
-                                      )}
-                                    </Listbox.Option>
-                                  ))}
-                                </Listbox.Options>
-                              </Transition>
-                            </div>
-                          )}
-                        </Listbox>
-                      )}
-                    />
-                  </div>
-                  <div className="w-full md:w-1/2  mb-3 lg:ml-[4px]">
-                    <Controller
-                      name="medium"
-                      control={control}
-                      render={({ field: { onChange } }) => (
-                        <Listbox
-                          value={selectedMedium}
-                          onChange={(e) => {
-                            onChange(e);
-                            setSelectedMedium(e);
-                          }}
-                        >
-                          {({ open }) => (
-                            <div className="relative lg:ms-0 z-10 min-w-[180px]">
-                              <Listbox.Label className="block text-gray-600 font-semibold text-sm leading-none mb-3 cursor-pointer">
-                                Medium
-                              </Listbox.Label>
-
-                              <Listbox.Button className="border border-gray-300  text-heading text-[13px] md:text-sm font-semibold  relative w-full py-2 ps-3 pe-10 text-start bg-white  shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm cursor-pointer ">
-                                <span className="block truncate">
-                                  {selectedMedium}
-                                </span>
-                                <span className="absolute inset-y-0 end-0 flex items-center pe-2 pointer-events-none">
-                                  <HiOutlineSelector
-                                    className="w-5 h-5 text-gray-400"
-                                    aria-hidden="true"
-                                  />
-                                </span>
-                              </Listbox.Button>
-                              <Transition
-                                show={open}
-                                as={Fragment}
-                                leave="transition ease-in duration-100"
-                                leaveFrom="opacity-100"
-                                leaveTo="opacity-0"
-                              >
-                                <Listbox.Options
-                                  static
-                                  className="absolute w-full py-1 mt-1 overflow-auto bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none text-sm"
-                                >
-                                  {MediumOptions?.map((option, idx) => (
-                                    <Listbox.Option
-                                      key={idx}
-                                      className={({ active }) =>
-                                        `${
-                                          active
-                                            ? 'text-amber-900 bg-gray-100'
-                                            : 'text-gray-900'
-                                        }
-                          cursor-default select-none relative py-2 ps-10 pe-4`
-                                      }
-                                      value={option}
-                                    >
-                                      {({ selected, active }) => (
-                                        <>
-                                          <span
-                                            className={`${
-                                              selected
-                                                ? 'font-medium'
-                                                : 'font-normal'
-                                            } block truncate`}
-                                          >
-                                            {option}
-                                          </span>
-                                          {selected ? (
-                                            <span
-                                              className={`${
-                                                active ? 'text-amber-600' : ''
-                                              }
-                                check-icon absolute inset-y-0 start-0 flex items-center ps-3`}
-                                            >
-                                              <HiCheck
-                                                className="w-5 h-5"
-                                                aria-hidden="true"
-                                              />
-                                            </span>
-                                          ) : null}
-                                        </>
-                                      )}
-                                    </Listbox.Option>
-                                  ))}
-                                </Listbox.Options>
-                              </Transition>
-                            </div>
-                          )}
-                        </Listbox>
-                      )}
-                    />
-                  </div>
-                </div>
-
-                <div className="w-full mb-3 ">
-                  <Input
-                    type="text"
-                    variant="outline"
-                    label="Address"
-                    placeholder="Enter Your Address"
-                    {...register('address', {
-                      required: 'You must provide your address !',
-                    })}
-                    error={errors.address?.message}
-                  />
-                </div>
-
-                <div className="flex flex-col lg:flex-row">
-                  <div className="w-full md:w-1/2  mb-3 ">
-                    <Input
-                      type="text"
-                      variant="outline"
-                      label="City"
-                      placeholder="Your City/Town Name"
-                      {...register('city')}
-                      error={errors.city?.message}
-                    />
-                  </div>
-                  <div className="w-full md:w-1/2  mb-3 lg:ml-[4px]">
-                    <Controller
-                      name="state"
-                      control={control}
-                      render={({ field: { onChange } }) => (
-                        <Listbox
-                          value={selectedState}
-                          onChange={(e) => {
-                            onChange(e);
-                            setSelectedState(e);
-                          }}
-                        >
-                          {({ open }) => (
-                            <div className="relative lg:ms-0 z-10 min-w-[180px]">
-                              <Listbox.Label className="block text-gray-600 font-semibold text-sm leading-none mb-3 cursor-pointer">
-                                State
-                              </Listbox.Label>
-
-                              <Listbox.Button className="border border-gray-300  text-heading text-[13px] md:text-sm font-semibold  relative w-full py-2 ps-3 pe-10 text-start bg-white  shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm cursor-pointer ">
-                                <span className="block truncate">
-                                  {selectedState}
-                                </span>
-                                <span className="absolute inset-y-0 end-0 flex items-center pe-2 pointer-events-none">
-                                  <HiOutlineSelector
-                                    className="w-5 h-5 text-gray-400"
-                                    aria-hidden="true"
-                                  />
-                                </span>
-                              </Listbox.Button>
-                              <Transition
-                                show={open}
-                                as={Fragment}
-                                leave="transition ease-in duration-100"
-                                leaveFrom="opacity-100"
-                                leaveTo="opacity-0"
-                              >
-                                <Listbox.Options
-                                  static
-                                  className="absolute w-full py-1 mt-1 overflow-auto bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none text-sm"
-                                >
-                                  {StatesOptions?.map((option, idx) => (
-                                    <Listbox.Option
-                                      key={idx}
-                                      className={({ active }) =>
-                                        `${
-                                          active
-                                            ? 'text-amber-900 bg-gray-100'
-                                            : 'text-gray-900'
-                                        }
-                          cursor-default select-none relative py-2 ps-10 pe-4`
-                                      }
-                                      value={option}
-                                    >
-                                      {({ selected, active }) => (
-                                        <>
-                                          <span
-                                            className={`${
-                                              selected
-                                                ? 'font-medium'
-                                                : 'font-normal'
-                                            } block truncate`}
-                                          >
-                                            {option}
-                                          </span>
-                                          {selected ? (
-                                            <span
-                                              className={`${
-                                                active ? 'text-amber-600' : ''
-                                              }
-                                check-icon absolute inset-y-0 start-0 flex items-center ps-3`}
-                                            >
-                                              <HiCheck
-                                                className="w-5 h-5"
-                                                aria-hidden="true"
-                                              />
-                                            </span>
-                                          ) : null}
-                                        </>
-                                      )}
-                                    </Listbox.Option>
-                                  ))}
-                                </Listbox.Options>
-                              </Transition>
-                            </div>
-                          )}
-                        </Listbox>
-                      )}
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-col lg:flex-row">
-                  <div className="w-full lg:w-1/2  mb-3 ">
-                    <Input
-                      type="text"
-                      variant="outline"
-                      label="Contact Number "
-                      placeholder="Mobile Number"
-                      {...register('mobile', {
-                        required: 'You must provide your mobile number !',
-                        pattern: {
-                          value: /^((\+91?)|\+)?[7-9][0-9]{9}$/,
-                          message: 'Invalid Mobile Number !',
-                        },
-                      })}
-                      error={errors.mobile?.message}
-                    />
-                  </div>
-                  <div className="w-full lg:w-1/2  mb-3 lg:ml-[4px]">
-                    <Input
-                      type="text"
-                      variant="outline"
-                      label="Whatsapp Number (Optional) "
-                      placeholder="Whatsapp Number"
-                      {...register('whatsapp', {
-                        pattern: {
-                          value: /^((\+91?)|\+)?[7-9][0-9]{9}$/,
-                          message: 'Invalid Mobile Number !',
-                        },
-                      })}
-                      error={errors.whatsapp?.message}
-                    />
-                  </div>
-                </div>
-
-                <div className="text-center mt-8 mb-8">
-                  <button className="bg-green-500 hover:bg-green-700 text-white text-center py-2 px-5 rounded-full">
-                    {processing ? 'Submitting Form ... ' : 'Register'}
-                  </button>
-                </div>
-                {errorMsg ? (
-                  <Alert
-                    message={errorMsg}
-                    variant="error"
-                    closeable={true}
-                    className="mt-5"
-                    onClose={() => setErrorMsg('')}
-                  />
-                ) : null}
-              </form>
+        <div className="max-w-screen-xl px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-gray-100 text-gray-900 rounded-lg shadow-lg">
+          <div className="text-center pt-8">
+            <div>
+              <h2 className="text-3xl lg:text-3xl font-bold leading-tight">
+                VedasOne Registration Form
+              </h2>
+              <div className="text-gray-700 mt-8">
+                Refer 5 friends &amp; Get 50% Discount on Tuitionn Fee
+              </div>
+            </div>
+            <div className="mt-12">
+              <HeroIcon />
             </div>
           </div>
+          <div>
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              noValidate
+              className="w-full"
+            >
+              <div className="text-center mb-3">
+                <img
+                  className="inline object-cover w-28 h-28  rounded-full overflow-hidden border"
+                  src={
+                    profilePhoto
+                      ? URL.createObjectURL(profilePhoto)
+                      : '/images/default-profile.svg'
+                  }
+                  alt="Profile Photo"
+                />
+              </div>
+
+              <div {...getRootProps()}>
+                <input
+                  className="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  {...getInputProps()}
+                />
+                <div className="flex justify-center">
+                  <div className="w-[184px] px-6 py-2 border cursor-pointer border-dashed border-gray-900 bg-gray-100 ">
+                    <p className=" text-[12px] uppercase ">
+                      Choose Your Photo{' '}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="w-full mb-3">
+                <Input
+                  variant="outline"
+                  type="text"
+                  label="Full Name"
+                  placeholder="Enter your full name"
+                  {...register('name', {
+                    required: 'You must provide your full name !',
+                  })}
+                  error={errors.name?.message}
+                />
+              </div>
+              <div className="w-full mb-3 ">
+                <Input
+                  type="email"
+                  variant="outline"
+                  label="Email Address "
+                  placeholder="Enter your email address"
+                  {...register('email', {
+                    required: 'You must provide your email address !',
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                      message: 'Invalid email address !',
+                    },
+                  })}
+                  error={errors.email?.message}
+                />
+              </div>
+              <div className="w-full mb-3 ">
+                <PasswordInput
+                  label="Password"
+                  variant="outline"
+                  placeholder="Set Password"
+                  helperText="[ minimum 8 characters ] "
+                  {...register('password', {
+                    required: 'You must set password !',
+                    pattern: {
+                      value: /^(?=.*).{8,}$/,
+                      message: 'Invalid Password  !',
+                    },
+                  })}
+                  error={errors?.password?.message!}
+                />
+              </div>
+
+              <div className="flex flex-col lg:flex-row">
+                <div className="w-full md:w-1/2  mb-3 ">
+                  <Controller
+                    name="class"
+                    control={control}
+                    render={({ field: { onChange } }) => (
+                      <Listbox
+                        value={selectedClass}
+                        onChange={(e) => {
+                          onChange(e);
+                          setSelectedClass(e);
+                        }}
+                      >
+                        {({ open }) => (
+                          <div className="relative lg:ms-0 z-10 min-w-[180px]">
+                            <Listbox.Label className="block text-gray-600 font-semibold text-sm leading-none mb-3 cursor-pointer">
+                              Class
+                            </Listbox.Label>
+
+                            <Listbox.Button className="border border-gray-300  text-heading text-[13px] md:text-sm font-semibold  relative w-full py-2 ps-3 pe-10 text-start bg-white  shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm cursor-pointer ">
+                              <span className="block truncate">
+                                {selectedClass}
+                              </span>
+                              <span className="absolute inset-y-0 end-0 flex items-center pe-2 pointer-events-none">
+                                <HiOutlineSelector
+                                  className="w-5 h-5 text-gray-400"
+                                  aria-hidden="true"
+                                />
+                              </span>
+                            </Listbox.Button>
+                            <Transition
+                              show={open}
+                              as={Fragment}
+                              leave="transition ease-in duration-100"
+                              leaveFrom="opacity-100"
+                              leaveTo="opacity-0"
+                            >
+                              <Listbox.Options
+                                static
+                                className="absolute w-full py-1 mt-1 overflow-auto bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none text-sm"
+                              >
+                                {ClassOptions?.map((option, idx) => (
+                                  <Listbox.Option
+                                    key={idx}
+                                    className={({ active }) =>
+                                      `${
+                                        active
+                                          ? 'text-amber-900 bg-gray-100'
+                                          : 'text-gray-900'
+                                      }
+                          cursor-default select-none relative py-2 ps-10 pe-4`
+                                    }
+                                    value={option}
+                                  >
+                                    {({ selected, active }) => (
+                                      <>
+                                        <span
+                                          className={`${
+                                            selected
+                                              ? 'font-medium'
+                                              : 'font-normal'
+                                          } block truncate`}
+                                        >
+                                          {option}
+                                        </span>
+                                        {selected ? (
+                                          <span
+                                            className={`${
+                                              active ? 'text-amber-600' : ''
+                                            }
+                                check-icon absolute inset-y-0 start-0 flex items-center ps-3`}
+                                          >
+                                            <HiCheck
+                                              className="w-5 h-5"
+                                              aria-hidden="true"
+                                            />
+                                          </span>
+                                        ) : null}
+                                      </>
+                                    )}
+                                  </Listbox.Option>
+                                ))}
+                              </Listbox.Options>
+                            </Transition>
+                          </div>
+                        )}
+                      </Listbox>
+                    )}
+                  />
+                </div>
+                <div className="w-full md:w-1/2  mb-3 lg:ml-[4px]">
+                  <Controller
+                    name="medium"
+                    control={control}
+                    render={({ field: { onChange } }) => (
+                      <Listbox
+                        value={selectedMedium}
+                        onChange={(e) => {
+                          onChange(e);
+                          setSelectedMedium(e);
+                        }}
+                      >
+                        {({ open }) => (
+                          <div className="relative lg:ms-0 z-10 min-w-[180px]">
+                            <Listbox.Label className="block text-gray-600 font-semibold text-sm leading-none mb-3 cursor-pointer">
+                              Medium
+                            </Listbox.Label>
+
+                            <Listbox.Button className="border border-gray-300  text-heading text-[13px] md:text-sm font-semibold  relative w-full py-2 ps-3 pe-10 text-start bg-white  shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm cursor-pointer ">
+                              <span className="block truncate">
+                                {selectedMedium}
+                              </span>
+                              <span className="absolute inset-y-0 end-0 flex items-center pe-2 pointer-events-none">
+                                <HiOutlineSelector
+                                  className="w-5 h-5 text-gray-400"
+                                  aria-hidden="true"
+                                />
+                              </span>
+                            </Listbox.Button>
+                            <Transition
+                              show={open}
+                              as={Fragment}
+                              leave="transition ease-in duration-100"
+                              leaveFrom="opacity-100"
+                              leaveTo="opacity-0"
+                            >
+                              <Listbox.Options
+                                static
+                                className="absolute w-full py-1 mt-1 overflow-auto bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none text-sm"
+                              >
+                                {MediumOptions?.map((option, idx) => (
+                                  <Listbox.Option
+                                    key={idx}
+                                    className={({ active }) =>
+                                      `${
+                                        active
+                                          ? 'text-amber-900 bg-gray-100'
+                                          : 'text-gray-900'
+                                      }
+                          cursor-default select-none relative py-2 ps-10 pe-4`
+                                    }
+                                    value={option}
+                                  >
+                                    {({ selected, active }) => (
+                                      <>
+                                        <span
+                                          className={`${
+                                            selected
+                                              ? 'font-medium'
+                                              : 'font-normal'
+                                          } block truncate`}
+                                        >
+                                          {option}
+                                        </span>
+                                        {selected ? (
+                                          <span
+                                            className={`${
+                                              active ? 'text-amber-600' : ''
+                                            }
+                                check-icon absolute inset-y-0 start-0 flex items-center ps-3`}
+                                          >
+                                            <HiCheck
+                                              className="w-5 h-5"
+                                              aria-hidden="true"
+                                            />
+                                          </span>
+                                        ) : null}
+                                      </>
+                                    )}
+                                  </Listbox.Option>
+                                ))}
+                              </Listbox.Options>
+                            </Transition>
+                          </div>
+                        )}
+                      </Listbox>
+                    )}
+                  />
+                </div>
+              </div>
+
+              <div className="w-full mb-3 ">
+                <Input
+                  type="text"
+                  variant="outline"
+                  label="Address"
+                  placeholder="Enter Your Address"
+                  {...register('address', {
+                    required: 'You must provide your address !',
+                  })}
+                  error={errors.address?.message}
+                />
+              </div>
+
+              <div className="flex flex-col lg:flex-row">
+                <div className="w-full md:w-1/2  mb-3 ">
+                  <Input
+                    type="text"
+                    variant="outline"
+                    label="City"
+                    placeholder="Your City/Town Name"
+                    {...register('city')}
+                    error={errors.city?.message}
+                  />
+                </div>
+                <div className="w-full md:w-1/2  mb-3 lg:ml-[4px]">
+                  <Controller
+                    name="state"
+                    control={control}
+                    render={({ field: { onChange } }) => (
+                      <Listbox
+                        value={selectedState}
+                        onChange={(e) => {
+                          onChange(e);
+                          setSelectedState(e);
+                        }}
+                      >
+                        {({ open }) => (
+                          <div className="relative lg:ms-0 z-10 min-w-[180px]">
+                            <Listbox.Label className="block text-gray-600 font-semibold text-sm leading-none mb-3 cursor-pointer">
+                              State
+                            </Listbox.Label>
+
+                            <Listbox.Button className="border border-gray-300  text-heading text-[13px] md:text-sm font-semibold  relative w-full py-2 ps-3 pe-10 text-start bg-white  shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm cursor-pointer ">
+                              <span className="block truncate">
+                                {selectedState}
+                              </span>
+                              <span className="absolute inset-y-0 end-0 flex items-center pe-2 pointer-events-none">
+                                <HiOutlineSelector
+                                  className="w-5 h-5 text-gray-400"
+                                  aria-hidden="true"
+                                />
+                              </span>
+                            </Listbox.Button>
+                            <Transition
+                              show={open}
+                              as={Fragment}
+                              leave="transition ease-in duration-100"
+                              leaveFrom="opacity-100"
+                              leaveTo="opacity-0"
+                            >
+                              <Listbox.Options
+                                static
+                                className="absolute w-full py-1 mt-1 overflow-auto bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none text-sm"
+                              >
+                                {StatesOptions?.map((option, idx) => (
+                                  <Listbox.Option
+                                    key={idx}
+                                    className={({ active }) =>
+                                      `${
+                                        active
+                                          ? 'text-amber-900 bg-gray-100'
+                                          : 'text-gray-900'
+                                      }
+                          cursor-default select-none relative py-2 ps-10 pe-4`
+                                    }
+                                    value={option}
+                                  >
+                                    {({ selected, active }) => (
+                                      <>
+                                        <span
+                                          className={`${
+                                            selected
+                                              ? 'font-medium'
+                                              : 'font-normal'
+                                          } block truncate`}
+                                        >
+                                          {option}
+                                        </span>
+                                        {selected ? (
+                                          <span
+                                            className={`${
+                                              active ? 'text-amber-600' : ''
+                                            }
+                                check-icon absolute inset-y-0 start-0 flex items-center ps-3`}
+                                          >
+                                            <HiCheck
+                                              className="w-5 h-5"
+                                              aria-hidden="true"
+                                            />
+                                          </span>
+                                        ) : null}
+                                      </>
+                                    )}
+                                  </Listbox.Option>
+                                ))}
+                              </Listbox.Options>
+                            </Transition>
+                          </div>
+                        )}
+                      </Listbox>
+                    )}
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col lg:flex-row">
+                <div className="w-full lg:w-1/2  mb-3 ">
+                  <Input
+                    type="text"
+                    variant="outline"
+                    label="Contact Number "
+                    placeholder="Mobile Number"
+                    {...register('mobile', {
+                      required: 'You must provide your mobile number !',
+                      pattern: {
+                        value: /^((\+91?)|\+)?[7-9][0-9]{9}$/,
+                        message: 'Invalid Mobile Number !',
+                      },
+                    })}
+                    error={errors.mobile?.message}
+                  />
+                </div>
+                <div className="w-full lg:w-1/2  mb-3 lg:ml-[4px]">
+                  <Input
+                    type="text"
+                    variant="outline"
+                    label="Whatsapp Number (Optional) "
+                    placeholder="Whatsapp Number"
+                    {...register('whatsapp', {
+                      pattern: {
+                        value: /^((\+91?)|\+)?[7-9][0-9]{9}$/,
+                        message: 'Invalid Mobile Number !',
+                      },
+                    })}
+                    error={errors.whatsapp?.message}
+                  />
+                </div>
+              </div>
+
+              <div className="text-center mt-8 mb-8">
+                <button className="bg-green-500 hover:bg-green-700 text-white text-center py-2 px-5 rounded-full">
+                  {processing ? 'Submitting Form ... ' : 'Register'}
+                </button>
+              </div>
+              {errorMsg ? (
+                <Alert
+                  message={errorMsg}
+                  variant="error"
+                  closeable={true}
+                  className="mt-5"
+                  onClose={() => setErrorMsg('')}
+                />
+              ) : null}
+            </form>
+          </div>
         </div>
+
+        // <div className="max-w-[480px] mx-auto mb-12 lg:mb-14 xl:mb-16">
+        //   <div className="flex flex-wrap bg-skin-fill w-full p-3   mt-8 lg:mt-0 relative z-10">
+        //     <div className="w-full pb-0.5 pt-1.5">
+
+        //     </div>
+        //   </div>
+        // </div>
       )}
     </>
   );

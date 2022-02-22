@@ -5,6 +5,7 @@ import EmailProvider from 'next-auth/providers/email';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import { compareSync } from 'bcrypt';
 import prisma from '@lib/prisma';
+import jwt from 'jsonwebtoken';
 
 export default NextAuth({
   providers: [
@@ -72,6 +73,24 @@ export default NextAuth({
     secret: process.env.SECRET,
     // Set to true to use encryption (default: false)
     // encryption: true,
+
+    encode: async ({ secret, token, maxAge }) => {
+      const jwtClaims = {
+        sub: token.sub.toString(),
+        name: token.name,
+        email: token.email,
+        image: token.image,
+        iat: Date.now() / 1000,
+        exp: Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60,
+      };
+      const encodedToken = jwt.sign(jwtClaims, secret, { algorithm: 'HS256' });
+      return encodedToken;
+    },
+    decode: async ({ secret, token, maxAge }) => {
+      const decodedToken = jwt.verify(token, secret, { algorithms: ['HS256'] });
+      return decodedToken;
+    },
+
     // encode: async ({ secret, token, maxAge }) => {},
     // decode: async ({ secret, token, maxAge }) => {},
   },
@@ -92,14 +111,23 @@ export default NextAuth({
     //   return baseUrl;
     // },
     async session({ session, user, token }) {
-      session.accessToken = token.accessToken;
-      return session;
+      const encodedToken = jwt.sign(token, process.env.SECRET, {
+        algorithm: 'HS256',
+      });
+      session.id = token.id;
+      session.user.image = token.image;
+      session.token = encodedToken;
+      return Promise.resolve(session);
     },
     async jwt({ token, user, account, profile, isNewUser }) {
-      if (account) {
-        token.accessToken = account.access_token;
+      const isUserSignedIn = user ? true : false;
+      // make a http call to our graphql api
+      // store this in postgres
+      if (isUserSignedIn) {
+        token.id = user.id.toString();
+        token.image = user.image.toString();
       }
-      return token;
+      return Promise.resolve(token);
     },
   },
 

@@ -28,8 +28,11 @@ import { fetchStudents } from '@framework/student/get-all-students';
 import { LIMITS } from '@framework/utils/limits';
 import ClassList from '@components/class/classlist';
 import { ImFacebook } from 'react-icons/im';
+import { useSession } from 'next-auth/react';
 
 export default function Home() {
+  const { data: token, status } = useSession();
+  console.log(token);
   return (
     <>
       <Seo title="Home" description="Online Education Institute" path="/" />

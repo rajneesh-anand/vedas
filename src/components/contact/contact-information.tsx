@@ -48,14 +48,17 @@ const ContactInformation: FC = () => {
           <Heading variant="mediumHeading" className="mb-2 lg:mb-2.5 font-bold">
             VedusOne Academy Location
           </Heading>
-          <Text>
-            B-1829 , VedusOne Academy Building , Shastri Nagar , Delhi 110052
-          </Text>
+          <p className="text-skin-muted text-sm leading-7 lg:leading-[27px] lg:text-15px mb-1">
+            B-1829 , VedusOne Academy Building
+          </p>
+          <p className="text-skin-muted text-sm leading-7 lg:leading-[27px] lg:text-15px mb-1">
+            Shastri Nagar , Delhi 110052
+          </p>
         </div>
       </div>
       <div className="w-full md:w-1/3  mb-3 text-center">
         <div className="flex justify-center mb-1">
-          <LocationIcon className="w-12 lg:w-13 xl:w-[60px] h-12 lg:h-13 xl:h-[60px] " />
+          <PhoneIcon className="w-12 lg:w-13 xl:w-[60px] h-12 lg:h-13 xl:h-[60px] " />
         </div>
 
         <div className="lg:ps-3 2xl:ps-4 mt-4 lg:mt-0">
@@ -68,7 +71,7 @@ const ContactInformation: FC = () => {
 
       <div className="w-full md:w-1/3  mb-3 text-center">
         <div className="flex justify-center mb-1">
-          <LocationIcon className="w-12 lg:w-13 xl:w-[60px] h-12 lg:h-13 xl:h-[60px] " />
+          <MailIcon className="w-12 lg:w-13 xl:w-[60px] h-12 lg:h-13 xl:h-[60px] " />
         </div>
 
         <div className="lg:ps-3 2xl:ps-4 mt-4 lg:mt-0">

@@ -18,6 +18,8 @@ const StudentInformation: FC<StudentFeedProps> = ({ className }) => {
     limit: LIMITS.STUDENT_LIMITS,
   });
 
+  console.log(data);
+
   return (
     <StudentsGridBlock
       sectionHeading=" Enrolled Students in VedusOne Academy "
