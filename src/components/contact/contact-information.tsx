@@ -14,7 +14,8 @@ const data = [
       <LocationIcon className="w-12 lg:w-13 xl:w-[60px] h-12 lg:h-13 xl:h-[60px]" />
     ),
     name: 'VedusOne Academy Location',
-    description: 'text-office-location-details',
+    description:
+      'B-1829 , VedusOne Academy Building , Shastri Nagar , Delhi 110052',
   },
   {
     id: 2,
@@ -22,8 +23,8 @@ const data = [
     icon: (
       <PhoneIcon className="w-12 lg:w-13 xl:w-[60px] h-12 lg:h-13 xl:h-[60px]" />
     ),
-    name: 'text-phone',
-    description: 'text-phone-details',
+    name: 'Call Us Anytime',
+    description: '( +91 ) 8810436602',
   },
   {
     id: 3,
@@ -32,35 +33,67 @@ const data = [
       <MailIcon className="w-12 lg:w-13 xl:w-[60px] h-12 lg:h-13 xl:h-[60px]" />
     ),
     name: 'text-email',
-    description: 'text-email-details',
+    description: 'vedusone@gmail.com',
   },
 ];
 const ContactInformation: FC = () => {
-  const { t } = useTranslation('common');
   return (
-    <>
-      {data.length > 0 && (
-        <div className="px-5 py-[100px] lg:px-0 xl:px-12 sm:grid grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-7 max-w-[1420px] mx-auto space-y-7 sm:space-y-0">
-          {data?.map((item: any) => (
-            <div
-              key={`contact--key${item.id}`}
-              className="flex flex-col lg:flex-row max-w-xs lg:max-w-sm xl:pe-7"
-            >
-              <div className="flex-shrink-0 w-14 xl:w-16">{item.icon}</div>
-              <div className="lg:ps-3 2xl:ps-4 mt-4 lg:mt-0">
-                <Heading
-                  variant="mediumHeading"
-                  className="mb-2 lg:mb-2.5 font-bold"
-                >
-                  {t(item.name)}
-                </Heading>
-                <Text>{t(item.description)}</Text>
-              </div>
-            </div>
-          ))}
+    <div className="flex flex-col lg:flex-row justify-center items-center px-5 py-[64px] ">
+      <div className="w-full md:w-1/3  mb-3 text-center">
+        <div className="flex justify-center mb-1">
+          <LocationIcon className="w-12 lg:w-13 xl:w-[60px] h-12 lg:h-13 xl:h-[60px] " />
         </div>
-      )}
-    </>
+
+        <div className="lg:ps-3 2xl:ps-4 mt-4 lg:mt-0">
+          <Heading variant="mediumHeading" className="mb-2 lg:mb-2.5 font-bold">
+            VedusOne Academy Location
+          </Heading>
+          <Text>
+            B-1829 , VedusOne Academy Building , Shastri Nagar , Delhi 110052
+          </Text>
+        </div>
+      </div>
+      <div className="w-full md:w-1/3  mb-3 text-center">
+        <div className="flex justify-center mb-1">
+          <LocationIcon className="w-12 lg:w-13 xl:w-[60px] h-12 lg:h-13 xl:h-[60px] " />
+        </div>
+
+        <div className="lg:ps-3 2xl:ps-4 mt-4 lg:mt-0">
+          <Heading variant="mediumHeading" className="mb-2 lg:mb-2.5 font-bold">
+            Call Us Anytime
+          </Heading>
+          <Text>( +91 ) 8810436602</Text>
+        </div>
+      </div>
+
+      <div className="w-full md:w-1/3  mb-3 text-center">
+        <div className="flex justify-center mb-1">
+          <LocationIcon className="w-12 lg:w-13 xl:w-[60px] h-12 lg:h-13 xl:h-[60px] " />
+        </div>
+
+        <div className="lg:ps-3 2xl:ps-4 mt-4 lg:mt-0">
+          <Heading variant="mediumHeading" className="mb-2 lg:mb-2.5 font-bold">
+            Send Email @
+          </Heading>
+          <p className="mb-1">
+            <a
+              href="mailto:vedusone@gmail.com"
+              className="text-skin-muted text-sm leading-7 lg:leading-[27px] lg:text-15px"
+            >
+              vedusone@gmail.com
+            </a>
+          </p>
+          <p>
+            <a
+              href="mailto: studentsupport@gmail.com"
+              className="text-skin-muted text-sm leading-7 lg:leading-[27px] lg:text-15px"
+            >
+              studentsupport@gmail.com
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
   );
 };
 

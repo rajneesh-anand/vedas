@@ -573,7 +573,7 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="text-center mt-8 mb-8">
-                  <button className="text-white px-8 py-[4px] text-[16px]  bg-gradient-to-r from-yellow-500 via-pink-500 to-red-500 hover:from-green-400 hover:to-blue-500 ">
+                  <button className="bg-green-500 hover:bg-green-700 text-white text-center py-2 px-5 rounded-full">
                     {processing ? 'Submitting Form ... ' : 'Register'}
                   </button>
                 </div>

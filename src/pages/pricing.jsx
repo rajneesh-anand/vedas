@@ -249,6 +249,15 @@ const PricingPage = ({ user }) => {
       />
 
       <Container>
+        <div className="max-w-3xl mx-auto text-center mt-8 mb-8">
+          <h1 className="text-3xl  font-medium text-indigo-700 mb-1 ">
+            Select Your Subjects Plan
+          </h1>
+          <p className="text-gray-500 xl:mx-12">
+            we will notify you once the subject plan is available for disabled
+            plan
+          </p>
+        </div>
         <div className="flex flex-col">
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
