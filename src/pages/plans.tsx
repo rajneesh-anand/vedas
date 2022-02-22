@@ -4,9 +4,8 @@ import Layout from '@components/layout';
 import Seo from '@components/seo/seo';
 import CourseVideoTwo from '@components/course/get-all-videos-two';
 import ContactInformation from '@components/contact/contact-information';
-
 import PlanInfo from '@components/class/multistep/plan';
-import { FormProvider } from '@contexts/search/plan.context';
+
 import { GetServerSideProps } from 'next';
 import { QueryClient } from 'react-query';
 import { dehydrate } from 'react-query/hydration';
@@ -38,9 +37,7 @@ const PlansPage = () => {
       />
 
       <Container>
-        <div className="max-w-[1420px] mx-auto mb-12 mt-12 ">
-          <PlanInfo />
-        </div>
+        <PlanInfo />
         <CourseVideoTwo />
         <ContactInformation />
       </Container>

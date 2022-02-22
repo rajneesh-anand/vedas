@@ -40,9 +40,6 @@ const PlanInfo = () => {
     txnToken: '',
   });
 
-  const { studentInfo } = useFormData();
-  console.log(studentInfo);
-
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(`${process.env.API_URL}/plans`);
@@ -71,42 +68,42 @@ const PlanInfo = () => {
     fetchData();
   }, []);
 
-  const handlePayment = async (amount: string, plan: string) => {
-    // event.preventDefault();
-    try {
-      const orderData = {
-        name: session?.user?.name,
-        email: session?.user?.email,
-        type: plan,
-        amount: amount,
-        class: router.query.class,
-        board: studentInfo.board,
-        medium: studentInfo.medium,
-        subjects: studentInfo.subject,
-      };
-      console.log(orderData);
+  // const handlePayment = async (amount: string, plan: string) => {
+  //   // event.preventDefault();
+  //   try {
+  //     const orderData = {
+  //       name: session?.user?.name,
+  //       email: session?.user?.email,
+  //       type: plan,
+  //       amount: amount,
+  //       class: router.query.class,
+  //       board: studentInfo.board,
+  //       medium: studentInfo.medium,
+  //       subjects: studentInfo.subject,
+  //     };
+  //     console.log(orderData);
 
-      const response = await fetch('/api/paytm', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(orderData),
-      });
-      const result = await response.json();
+  //     const response = await fetch('/api/paytm', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(orderData),
+  //     });
+  //     const result = await response.json();
 
-      setPaytmData({
-        mid: 'zWEMTK89662017572077',
-        orderId: result.orderId,
-        txnToken: result.txnToken,
-      });
+  //     setPaytmData({
+  //       mid: 'zWEMTK89662017572077',
+  //       orderId: result.orderId,
+  //       txnToken: result.txnToken,
+  //     });
 
-      (document.getElementById('redFrom') as HTMLFormElement).submit();
-      // document.getElementById('redFrom')!.submit();
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //     (document.getElementById('redFrom') as HTMLFormElement).submit();
+  //     // document.getElementById('redFrom')!.submit();
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   return (
     <div className="pricing-table-2 py-6 md:py-12">
@@ -199,7 +196,7 @@ const PlanInfo = () => {
                   </Link>
                 ) : (
                   <Link
-                    href={`/pricing?type=${slugify(basicData?.plan_name)}`}
+                    href={`/pricing?type=${basicData?.plan_name}`}
                     className="bg-gradient-to-r hover:from-green-400  hover:to-blue-500 from-yellow-500  via-pink-500 to-red-500 rounded-full px-6 py-2 text-white"
                   >
                     Select Plan
@@ -248,7 +245,7 @@ const PlanInfo = () => {
                   </Link>
                 ) : (
                   <Link
-                    href={`/pricing?type=${slugify(proData?.plan_name)}`}
+                    href={`/pricing?type=${proData?.plan_name}`}
                     className="bg-gradient-to-r hover:from-green-400  hover:to-blue-500 from-yellow-500  via-pink-500 to-red-500 rounded-full px-6 py-2 text-white"
                   >
                     Select Plan
