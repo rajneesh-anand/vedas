@@ -196,7 +196,7 @@ const PlanInfo = () => {
                   </Link>
                 ) : (
                   <Link
-                    href={`/pricing?type=${basicData?.plan_name}`}
+                    href={`/pricing/smartplan?type=${basicData?.plan_name}`}
                     className="bg-gradient-to-r hover:from-green-400  hover:to-blue-500 from-yellow-500  via-pink-500 to-red-500 rounded-full px-6 py-2 text-white"
                   >
                     Select Plan
@@ -245,7 +245,7 @@ const PlanInfo = () => {
                   </Link>
                 ) : (
                   <Link
-                    href={`/pricing?type=${proData?.plan_name}`}
+                    href={`/pricing/liveplan?type=${proData?.plan_name}`}
                     className="bg-gradient-to-r hover:from-green-400  hover:to-blue-500 from-yellow-500  via-pink-500 to-red-500 rounded-full px-6 py-2 text-white"
                   >
                     Select Plan

@@ -166,16 +166,16 @@ export default function RegisterPage() {
         </Container>
       ) : (
         <div className="max-w-screen-xl px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-gray-100 text-gray-900 rounded-lg shadow-lg">
-          <div className="text-center pt-8">
+          <div className="text-center pt-1 lg:pt-[96px]">
             <div>
-              <h2 className="text-3xl lg:text-3xl font-bold leading-tight">
+              <h2 className="text-xl lg:text-3xl font-bold leading-tight">
                 VedasOne Registration Form
               </h2>
-              <div className="text-gray-700 mt-8">
+              <div className="text-gray-700 mt-4">
                 Refer 5 friends &amp; Get 50% Discount on Tuitionn Fee
               </div>
             </div>
-            <div className="mt-12">
+            <div className=" mt-1 lg:mt-[56px]">
               <HeroIcon />
             </div>
           </div>
@@ -602,14 +602,6 @@ export default function RegisterPage() {
             </form>
           </div>
         </div>
-
-        // <div className="max-w-[480px] mx-auto mb-12 lg:mb-14 xl:mb-16">
-        //   <div className="flex flex-wrap bg-skin-fill w-full p-3   mt-8 lg:mt-0 relative z-10">
-        //     <div className="w-full pb-0.5 pt-1.5">
-
-        //     </div>
-        //   </div>
-        // </div>
       )}
     </>
   );

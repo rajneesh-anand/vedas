@@ -109,6 +109,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   posts         Post[]
+  verificationTokens    VerificationToken[]
 
 }
 
@@ -144,9 +145,11 @@ model Session {
 
 
 model VerificationToken {
-  identifier String
+  identifier String?
+  userId     Int
   token      String   @unique
-  expires    DateTime
+  expires    DateTime?   
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([identifier, token])
 }

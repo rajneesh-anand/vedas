@@ -61,7 +61,7 @@ const Hiddenfrom = ({ mid, orderId, txnToken }) => {
   );
 };
 
-const PricingPage = ({ user }) => {
+const PricingSmartPlanPage = ({ user }) => {
   const userInfo = user ? JSON.parse(user) : null;
   const { setPlan, removePlan, totalAmount, planInfo } = useFormData();
   const [pricingData, setPricingData] = useState();
@@ -251,10 +251,10 @@ const PricingPage = ({ user }) => {
       <Container>
         <div className="max-w-3xl mx-auto text-center mt-8 mb-8">
           <h1 className="text-3xl  font-medium text-indigo-700 mb-1 ">
-            Select Your Subjects Plan
+            Select Your Subject Plan
           </h1>
           <p className="text-gray-500 xl:mx-12">
-            we will notify you once the subject plan is available for disabled
+            We will notify you once the subject plan is available for disabled
             plan
           </p>
         </div>
@@ -264,29 +264,29 @@ const PricingPage = ({ user }) => {
               {pricingData ? (
                 <div className="overflow-hidden">
                   <table className="min-w-full" id="pricing">
-                    <thead className="border-b">
+                    <thead className="border-b border-black">
                       <tr>
                         <th
                           scope="col"
-                          className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                          className="text-sm font-medium text-gray-900 px-6 py-4 text-left bg-gray-100"
                         >
                           SUBJECT
                         </th>
                         <th
                           scope="col"
-                          className="text-sm font-medium text-gray-900 px-6 py-4 text-center"
+                          className="text-sm font-medium text-gray-900 px-6 py-4 text-center bg-indigo-100"
                         >
                           MONTHLY FEE
                         </th>
                         <th
                           scope="col"
-                          className="text-sm font-medium text-gray-900 px-6 py-4 text-center "
+                          className="text-sm font-medium text-gray-900 px-6 py-4 text-center bg-yellow-100 "
                         >
                           HALF YEARLY FEE
                         </th>
                         <th
                           scope="col"
-                          className="text-sm font-medium text-gray-900 px-6 py-4 text-center"
+                          className="text-sm font-medium text-gray-900 px-6 py-4 text-center bg-green-100"
                         >
                           ANNUAL FEE
                         </th>
@@ -295,10 +295,10 @@ const PricingPage = ({ user }) => {
                     <tbody>
                       {pricingData.map((item, index) => (
                         <tr key={index} height="88px">
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                          <td className="px-6 py-4  uppercase whitespace-nowrap text-sm font-medium text-gray-900 bg-gray-100">
                             {item.name}
                           </td>
-                          <td className="text-center">
+                          <td className="text-center bg-indigo-100">
                             {item.monthly_status === 'active' ? (
                               <>
                                 <button
@@ -309,7 +309,7 @@ const PricingPage = ({ user }) => {
                                       amount: item.monthly_fee,
                                     })
                                   }
-                                  className="px-5 py-3 mt-4 w-[116px] border text-[18px] bg-gray-100 font-semibold rounded"
+                                  className="px-5 py-1.5 mt-4 w-[116px] border text-[18px] bg-gray-100 font-semibold rounded"
                                 >
                                   &#x20B9; {item.monthly_fee}
                                 </button>
@@ -333,7 +333,7 @@ const PricingPage = ({ user }) => {
                               </>
                             )}
                           </td>
-                          <td className="text-center">
+                          <td className="text-center bg-yellow-100">
                             {item.halfyearly_status === 'active' ? (
                               <>
                                 <button
@@ -344,7 +344,7 @@ const PricingPage = ({ user }) => {
                                       amount: item.halfyearly_fee,
                                     })
                                   }
-                                  className="px-5 py-3 mt-4 w-[116px] border text-[18px] bg-gray-100 font-semibold rounded"
+                                  className="px-5 py-1.5 mt-4 w-[116px] border text-[18px] bg-gray-100 font-semibold rounded"
                                 >
                                   &#x20B9; {item.halfyearly_fee}
                                 </button>
@@ -368,7 +368,7 @@ const PricingPage = ({ user }) => {
                               </>
                             )}
                           </td>
-                          <td className="text-center">
+                          <td className="text-center bg-green-100">
                             {item.yearly_status === 'active' ? (
                               <>
                                 <button
@@ -379,7 +379,7 @@ const PricingPage = ({ user }) => {
                                       amount: item.yearly_fee,
                                     })
                                   }
-                                  className="px-5 py-3 mt-4 w-[116px] border text-[18px] bg-gray-100 font-semibold rounded"
+                                  className="px-5 py-1.5 mt-4 w-[116px] border text-[18px] bg-gray-100 font-semibold rounded"
                                 >
                                   &#x20B9; {item.yearly_fee}
                                 </button>
@@ -408,7 +408,7 @@ const PricingPage = ({ user }) => {
                     </tbody>
                   </table>
 
-                  <div className="text-center pt-8 border-t mt-3">
+                  <div className="text-center pt-8 mt-3">
                     {totalAmount > 0 ? (
                       <button
                         onClick={handlePayment}
@@ -447,6 +447,6 @@ const PricingPage = ({ user }) => {
   );
 };
 
-PricingPage.Layout = Layout;
+PricingSmartPlanPage.Layout = Layout;
 
-export default PricingPage;
+export default PricingSmartPlanPage;
