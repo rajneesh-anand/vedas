@@ -125,7 +125,7 @@ export default NextAuth({
       // store this in postgres
       if (isUserSignedIn) {
         token.id = user.id.toString();
-        token.image = user.image.toString();
+        token.image = user.image ? user.image.toString() : null;
       }
       return Promise.resolve(token);
     },

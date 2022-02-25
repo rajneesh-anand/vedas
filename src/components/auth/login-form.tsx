@@ -37,7 +37,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ isPopup = true, className }) => {
       remember_me,
     });
     closeModal();
-    console.log(email, password, remember_me, 'data');
+    // console.log(email, password, remember_me, 'data');
   }
   function handelSocialLogin() {
     login({

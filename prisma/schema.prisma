@@ -98,7 +98,7 @@ model User {
   state         String?
   class         String?
   medium        String?
-  mobile        String?
+  mobile        String? @unique
   whatsapp      String?
   image         String?
   userType      String?  

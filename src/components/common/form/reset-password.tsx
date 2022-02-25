@@ -13,7 +13,7 @@ interface FormValues {
 export default function ResetPassword() {
   const router = useRouter();
   const accessToken = router.query.access;
-  console.log(accessToken);
+  // console.log(accessToken);
   const [status, setStatus] = useState('');
   const [pwdStatus, setPwdStatus] = useState('');
   const [errorMsg, setErrorMsg] = useState<string | undefined>('');

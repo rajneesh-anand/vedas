@@ -36,8 +36,9 @@ export default function Home() {
   return (
     <>
       <Seo title="Home" description="Online Education Institute" path="/" />
-      <HomeTopSection />
+
       <Container>
+        <HomeTopSection />
         <ClassList />
         <FeatureCarousel />
         <StudentsInformation className="mb-12 lg:mb-14 xl:mb-16 2xl:mb-20" />
