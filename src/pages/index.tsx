@@ -32,7 +32,7 @@ import { useSession } from 'next-auth/react';
 
 export default function Home() {
   const { data: token, status } = useSession();
-  console.log(token);
+
   return (
     <>
       <Seo title="Home" description="Online Education Institute" path="/" />
@@ -41,7 +41,13 @@ export default function Home() {
         <HomeTopSection />
         <ClassList />
         <FeatureCarousel />
-        <StudentsInformation className="mb-12 lg:mb-14 xl:mb-16 2xl:mb-20" />
+        <StudentsInformation
+          limit={15}
+          page={1}
+          orderBy="createdAt"
+          sortedBy="desc"
+          className="mb-12 lg:mb-14 xl:mb-16 2xl:mb-20"
+        />
         <CourseVideo />
         <ContactInformation />
       </Container>

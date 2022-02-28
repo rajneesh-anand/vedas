@@ -9,8 +9,8 @@ export const siteSettings = {
   name: 'VedusOne Academy',
   description: 'Online Education Institute ',
   author: {
-    name: 'RedQ, Inc.',
-    websiteUrl: 'https://redq.io',
+    name: 'VedusOne Academy',
+    websiteUrl: 'https://www.vedusone.com',
     address: '',
   },
   logo: {
@@ -145,7 +145,7 @@ export const siteSettings = {
       },
       {
         id: 3,
-        path: '/exams/',
+        path: '/quiz-test/',
         label: 'menu-exams',
       },
       // {

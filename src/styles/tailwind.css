@@ -603,3 +603,9 @@ table .isSelected {
   background: #10b981 !important;
   color: white !important;
 }
+.question-list > li:hover {
+  background: rgb(212, 227, 231);
+}
+.question-list > li.active {
+  background: rgb(212, 227, 231);
+}

@@ -39,7 +39,7 @@ const StudentCard: React.FC<StudentProps> = ({ student, className }) => {
   return (
     <article
       className={cn(
-        'flex flex-col group overflow-hidden rounded-md cursor-pointer transition-all duration-300 shadow-card hover:shadow-cardHover relative h-full',
+        'flex flex-col group overflow-hidden rounded-md cursor-pointer transition-all duration-300 shadow-card hover:shadow-cardHover relative h-full mb-3',
         className
       )}
       title={name}

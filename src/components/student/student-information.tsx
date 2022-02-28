@@ -8,29 +8,63 @@ import Heading from '@components/ui/heading';
 import { useStudentsQuery } from '@framework/student/get-all-students';
 import StudentsGridBlock from './students-grid-block';
 import { LIMITS } from '@framework/utils/limits';
+import Link from '@components/ui/link';
 
 interface StudentFeedProps {
   className?: string;
+  limit: number;
+  page: number;
+  orderBy: string;
+  sortedBy: string;
 }
 
-const StudentInformation: FC<StudentFeedProps> = ({ className }) => {
+const StudentInformation: FC<StudentFeedProps> = ({
+  className,
+  limit,
+  orderBy,
+  sortedBy,
+  page,
+}) => {
   const { data, isLoading, error } = useStudentsQuery({
-    limit: LIMITS.STUDENT_LIMITS,
+    limit: limit,
+    page,
+    orderBy,
+    sortedBy,
   });
 
-  console.log(data);
-
   return (
-    <StudentsGridBlock
-      sectionHeading=" Enrolled Students in VedusOne Academy "
-      sectionSubHeading="Hurry up ! Enroll Now &amp; Get Discounted Tuition Fee"
-      className={className}
-      students={data?.students.data}
-      loading={isLoading}
-      error={error?.message}
-      limit={LIMITS.STUDENT_LIMITS}
-      uniqueKey="best-sellers"
-    />
+    <>
+      <StudentsGridBlock
+        sectionHeading=" Enrolled Students in VedusOne Academy "
+        sectionSubHeading="Hurry up ! Enroll Now &amp; Get Discounted Tuition Fee"
+        className={className}
+        students={data?.students.data}
+        loading={isLoading}
+        error={error?.message}
+        limit={limit}
+        uniqueKey="best-sellers"
+      />
+      <div className="text-center">
+        <Link
+          href="/students"
+          className="inline-flex items-center justify-center w-full px-6 py-1.5 mb-2 text-md text-white bg-green-500 rounded-md hover:bg-green-400 sm:w-auto sm:mb-0"
+        >
+          EXPLORE MORE STUDENTS
+          <svg
+            className="w-4 h-4 ml-1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </Link>
+      </div>
+    </>
   );
 };
 

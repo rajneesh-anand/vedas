@@ -151,7 +151,7 @@ const CourseVideo = () => {
     <>
       <div className="pt-24 pb-16">
         <div className="relative mb-8">
-          <div className="inline-flex items-center underlineAnchor ">
+          <div className="flex  justify-center flex-col lg:flex-row items-center underlineAnchor ">
             <h1 className="text-[14px] md:text-3xl text-gray-800 font-bold mb-2 ">
               To avail our study material and sample papers
             </h1>

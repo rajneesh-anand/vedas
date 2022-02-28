@@ -5,7 +5,7 @@ import { Student } from '@framework/types';
 import Alert from '@components/ui/alert';
 
 interface ProductsProps {
-  sectionHeading: string;
+  sectionHeading?: string;
   sectionSubHeading?: string;
   headingPosition?: 'left' | 'center';
   className?: string;
@@ -29,11 +29,14 @@ const StudentsGridBlock: React.FC<ProductsProps> = ({
 }) => {
   return (
     <div className={`${className}`}>
-      <SectionHeader
-        sectionHeading={sectionHeading}
-        sectionSubHeading={sectionSubHeading}
-        headingPosition={headingPosition}
-      />
+      {sectionHeading && (
+        <SectionHeader
+          sectionHeading={sectionHeading}
+          sectionSubHeading={sectionSubHeading}
+          headingPosition={headingPosition}
+        />
+      )}
+
       <div className="flex flex-wrap justify-center mb-6">
         {error ? (
           <Alert message={error} className="col-span-full" />
@@ -46,7 +49,7 @@ const StudentsGridBlock: React.FC<ProductsProps> = ({
           ))
         ) : (
           students?.map((student: any, index) => (
-            <div className="w-1/2 lg:w-1/5 " key={index}>
+            <div className="w-1/2 lg:w-1/5 mb-3" key={index}>
               <StudentCard student={student} />
             </div>
           ))

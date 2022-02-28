@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Container,
-  Segment,
-  Item,
-  Dropdown,
-  Divider,
-  Button,
-  Message,
-} from 'semantic-ui-react';
+import { shuffle } from '@components/quiz/helper/utils';
+import Heading from '@components/ui/heading';
+import Link from '@components/ui/link';
+import Image from '@components/ui/image';
+const placeholderImage = `/assets/placeholder/products/product-grid.svg`;
+import Text from '@components/ui/text';
 
 const Main = ({ startQuiz }) => {
   const [category, setCategory] = useState('');
@@ -17,40 +14,25 @@ const Main = ({ startQuiz }) => {
   const [questionsType, setQuestionsType] = useState('0');
   const [countdownTime, setCountdownTime] = useState({
     hours: 0,
-    minutes: 120,
+    minutes: 900,
     seconds: 0,
   });
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState(null);
-  const [offline, setOffline] = useState(false);
-
-  const handleTimeChange = (e, { name, value }) => {
-    setCountdownTime({ ...countdownTime, [name]: value });
-  };
-
-  let allFieldsSelected = false;
-  if (
-    category &&
-    numOfQuestions &&
-    difficulty &&
-    questionsType &&
-    (countdownTime.hours || countdownTime.minutes || countdownTime.seconds)
-  ) {
-    allFieldsSelected = true;
-  }
 
   const fetchData = () => {
     setProcessing(true);
 
     if (error) setError(null);
 
-    const API = `https://opentdb.com/api.php?amount=${numOfQuestions}&category=${category}&difficulty=${difficulty}&type=${questionsType}`;
+    const API = 'https://opentdb.com/api.php?amount=30&difficulty=medium';
 
     fetch(API)
       .then((respone) => respone.json())
       .then((data) =>
         setTimeout(() => {
           const { response_code, results } = data;
+          console.log(results);
 
           if (response_code === 1) {
             const message = (
@@ -97,126 +79,41 @@ const Main = ({ startQuiz }) => {
       );
   };
 
-  if (offline) return <Offline />;
-
   return (
-    <Container>
-      <Segment>
-        <Item.Group divided>
-          <Item>
-            <Item.Image src={mindImg} />
-            <Item.Content>
-              <Item.Header>
-                <h1>The Ultimate Trivia Quiz</h1>
-              </Item.Header>
-              {error && (
-                <Message error onDismiss={() => setError(null)}>
-                  <Message.Header>Error!</Message.Header>
-                  {error.message}
-                </Message>
-              )}
-              <Divider />
-              <Item.Meta>
-                <Dropdown
-                  fluid
-                  selection
-                  name="category"
-                  placeholder="Select Quiz Category"
-                  header="Select Quiz Category"
-                  options={CATEGORIES}
-                  value={category}
-                  onChange={(e, { value }) => setCategory(value)}
-                  disabled={processing}
-                />
-                <br />
-                <Dropdown
-                  fluid
-                  selection
-                  name="numOfQ"
-                  placeholder="Select No. of Questions"
-                  header="Select No. of Questions"
-                  options={NUM_OF_QUESTIONS}
-                  value={numOfQuestions}
-                  onChange={(e, { value }) => setNumOfQuestions(value)}
-                  disabled={processing}
-                />
-                <br />
-                <Dropdown
-                  fluid
-                  selection
-                  name="difficulty"
-                  placeholder="Select Difficulty Level"
-                  header="Select Difficulty Level"
-                  options={DIFFICULTY}
-                  value={difficulty}
-                  onChange={(e, { value }) => setDifficulty(value)}
-                  disabled={processing}
-                />
-                <br />
-                <Dropdown
-                  fluid
-                  selection
-                  name="type"
-                  placeholder="Select Questions Type"
-                  header="Select Questions Type"
-                  options={QUESTIONS_TYPE}
-                  value={questionsType}
-                  onChange={(e, { value }) => setQuestionsType(value)}
-                  disabled={processing}
-                />
-                <br />
-                <Dropdown
-                  search
-                  selection
-                  name="hours"
-                  placeholder="Select Hours"
-                  header="Select Hours"
-                  options={COUNTDOWN_TIME.hours}
-                  value={countdownTime.hours}
-                  onChange={handleTimeChange}
-                  disabled={processing}
-                />
-                <Dropdown
-                  search
-                  selection
-                  name="minutes"
-                  placeholder="Select Minutes"
-                  header="Select Minutes"
-                  options={COUNTDOWN_TIME.minutes}
-                  value={countdownTime.minutes}
-                  onChange={handleTimeChange}
-                  disabled={processing}
-                />
-                <Dropdown
-                  search
-                  selection
-                  name="seconds"
-                  placeholder="Select Seconds"
-                  header="Select Seconds"
-                  options={COUNTDOWN_TIME.seconds}
-                  value={countdownTime.seconds}
-                  onChange={handleTimeChange}
-                  disabled={processing}
-                />
-              </Item.Meta>
-              <Divider />
-              <Item.Extra>
-                <Button
-                  primary
-                  size="big"
-                  icon="play"
-                  labelPosition="left"
-                  content={processing ? 'Processing...' : 'Play Now'}
-                  onClick={fetchData}
-                  disabled={!allFieldsSelected || processing}
-                />
-              </Item.Extra>
-            </Item.Content>
-          </Item>
-        </Item.Group>
-      </Segment>
-      <br />
-    </Container>
+    <div className="pt-10 lg:pt-12 xl:pt-14 pb-14 lg:pb-16 xl:pb-20 px-4 md:px-8">
+      <div className="w-full xl:max-w-[1490px] mx-auto">
+        <Heading variant="titleLarge" className="mb-4 lg:mb-6">
+          Select Quiz Test
+        </Heading>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-5 xl:gap-6">
+          <div className="flex items-center px-5 xl:px-7 py-5 xl:py-7 border border-skin-base rounded-lg shadow-vendorCard cursor-pointer relative bg-white transition-all hover:shadow-vendorCardHover">
+            <div className="relative flex flex-shrink-0 items-center justify-center bg-skin-thumbnail rounded-full overflow-hidden w-16 xl:w-20 h-16 xl:h-20">
+              {/* <Image
+                alt="bgLogo"
+                src={placeholderImage}
+                layout="fill"
+                objectFit="cover"
+              /> */}
+            </div>
+
+            <div className="flex flex-col ms-4 xl:ms-5">
+              <Heading variant="mediumHeading" className="pb-1.5">
+                Trivia Quiz Test
+              </Heading>
+              <Text className="xl:leading-6 mb-0">Time : 15 Minutes</Text>
+              <Text className="xl:leading-6 mb-0">Total Questions : 30</Text>
+
+              <button
+                onClick={fetchData}
+                class="px-5 py-2.5 font-medium bg-blue-50 hover:bg-blue-100 hover:text-blue-600 text-blue-500 rounded-lg text-sm"
+              >
+                {processing ? 'Processing...' : 'Play Now'}{' '}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

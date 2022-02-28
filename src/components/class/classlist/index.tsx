@@ -5,7 +5,7 @@ const ClassList: React.FC = () => {
     <>
       <div className="relative p-4 sm:p-6 rounded-sm overflow-hidden mb-8">
         <div className="relative ">
-          <div className="inline-flex items-center underlineAnchor mb-4 ">
+          <div className="flex justify-center flex-col lg:flex-row items-center underlineAnchor mb-4 ">
             <h1 className="text-[14px] md:text-3xl text-gray-800 font-bold mb-2 ">
               Welcome ! Select your class to
             </h1>
@@ -17,7 +17,7 @@ const ClassList: React.FC = () => {
             </Link>
           </div>
 
-          <p className="text-center lg:text-start">
+          <p className="text-center text-sm lg:text-start">
             Choose our study plans according to your academic board and medium
             of education
           </p>

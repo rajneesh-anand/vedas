@@ -1,8 +1,9 @@
-import Main from '../Main';
-import Quiz from '../Quiz';
-import Result from '../Result';
+import React, { useState } from 'react';
+import Main from '@components/quiz/main';
+import Quiz from '@components/quiz/quiz';
+import Result from '@components/quiz/result';
 
-const App = () => {
+const MockTestContent = () => {
   const [data, setData] = useState(null);
   const [countdownTime, setCountdownTime] = useState(null);
   const [isQuizStarted, setIsQuizStarted] = useState(false);
@@ -47,4 +48,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default MockTestContent;

@@ -12,6 +12,9 @@ export type StudentsQueryOptionsType = {
   student?: string;
   status?: string;
   limit?: number;
+  page?: number;
+  sortedBy?: string;
+  orderBy?: string;
 };
 
 export type CategoriesQueryOptionsType = {
