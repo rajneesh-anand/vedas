@@ -151,22 +151,23 @@ const CourseVideo = () => {
     <>
       <div className="pt-24 pb-16">
         <div className="relative mb-8">
-          <div className="flex  justify-center flex-col lg:flex-row items-center underlineAnchor ">
-            <h1 className="text-[14px] md:text-3xl text-gray-800 font-bold mb-2 ">
+          <div className="flex  justify-center flex-col lg:flex-row items-center underlineAnchor  mb-4 ">
+            <h1 className="text-[14px] md:text-3xl text-gray-800 font-bold ">
               To avail our study material and sample papers
             </h1>
             <Link
               href={`/plans?class=${selectedClass.value}`}
-              className="relative text-[14px] md:text-3xl font-bold text-white text-transparent bg-clip-text bg-blue-500  px-2 mb-2"
+              className="relative text-[14px] md:text-3xl font-bold text-white text-transparent bg-clip-text bg-blue-500  px-2"
             >
               Buy our study plan
             </Link>
           </div>
-
-          <p className="text-center lg:text-start">
-            Choose our study plans according to your academic board and medium
-            of education
-          </p>
+          <div className="flex justify-center items-center">
+            <p className="text-sm">
+              Choose our study plans according to your academic session and
+              medium of education
+            </p>
+          </div>
         </div>
 
         <div className="flex flex-wrap justify-between items-center flex-col lg:flex-row pb-2 border-b">

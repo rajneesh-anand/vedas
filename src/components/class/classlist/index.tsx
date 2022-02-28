@@ -13,14 +13,15 @@ const ClassList: React.FC = () => {
               href="/plans?class=six"
               className="relative text-[14px] md:text-3xl font-bold text-white text-transparent bg-clip-text bg-blue-500  px-2 mb-2"
             >
-              Watch free videos
+              watch free videos
             </Link>
           </div>
-
-          <p className="text-center text-sm lg:text-start">
-            Choose our study plans according to your academic board and medium
-            of education
-          </p>
+          <div className="flex justify-center items-center">
+            <p className="text-sm">
+              Choose our study plans according to your academic board and medium
+              of education
+            </p>
+          </div>
         </div>
 
         <div className="grid grid-cols-2 justify-center md:grid-cols-4 lg:grid-cols-7 gap-2 py-[56px]">
