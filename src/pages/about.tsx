@@ -41,7 +41,7 @@ export default function TermsPage() {
               }}
             />
 
-            <div className="grid my-8 lg:my-14 grid-cols-2 gap-4">
+            {/* <div className="grid my-8 lg:my-14 grid-cols-2 gap-4">
               <Image
                 src={aboutUs1}
                 alt={t('text-map')}
@@ -56,14 +56,18 @@ export default function TermsPage() {
                 width={576}
                 height={390}
               />
-            </div>
+            </div> */}
+            <p className="text-skin-base font-medium text-base lg:text-lg leading-7 2xl:text-[20px] lg:leading-loose lg:mt-4 mb-3.5">
+              {t(aboutSetting.titleTwo)} &nbsp;
+              <a href="mailto:vedusone@gmail.com">vedusone@gmail.com</a>
+            </p>
             <div
               className="text-skin-base opacity-70 text-sm leading-7 lg:text-15px lg:leading-loose"
               dangerouslySetInnerHTML={{
                 __html: t(aboutSetting.descriptionTwo),
               }}
             />
-            <div className="my-8 lg:my-14 flex flex-col sm:grid grid-cols-3 gap-4">
+            {/* <div className="my-8 lg:my-14 flex flex-col sm:grid grid-cols-3 gap-4">
               <Image
                 src={aboutUs3}
                 alt={t('text-map')}
@@ -85,8 +89,8 @@ export default function TermsPage() {
                 width={379}
                 height={262}
               />
-            </div>
-            <div
+            </div> */}
+            {/* <div
               className="text-skin-base opacity-70 text-sm leading-7 lg:text-15px lg:leading-loose"
               dangerouslySetInnerHTML={{
                 __html: t(aboutSetting.descriptionThree),
@@ -119,7 +123,7 @@ export default function TermsPage() {
               dangerouslySetInnerHTML={{
                 __html: t(aboutSetting.descriptionFive),
               }}
-            />
+            /> */}
           </div>
         </Container>
       </div>

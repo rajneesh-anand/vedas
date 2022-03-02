@@ -103,7 +103,7 @@ export const footer = {
   social: [
     {
       id: 1,
-      path: 'https://www.facebook.com/redqinc/',
+      path: 'https://www.facebook.com/',
       image: '/images/social/facebook.svg',
       name: 'facebook',
       width: 20,
@@ -111,7 +111,7 @@ export const footer = {
     },
     {
       id: 2,
-      path: 'https://twitter.com/redqinc',
+      path: 'https://twitter.com/',
       image: '/images/social/twitter.svg',
       name: 'twitter',
       width: 20,

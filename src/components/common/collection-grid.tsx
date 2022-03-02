@@ -44,7 +44,7 @@ interface Props {
 
 const breakpoints = {
   '1024': {
-    slidesPerView: 3,
+    slidesPerView: 1,
   },
   '768': {
     slidesPerView: 3,
@@ -65,15 +65,16 @@ const CollectionGrid: React.FC<Props> = ({
   return (
     <div className={className}>
       <Container>
-        <SectionHeader
-          sectionHeading="text-curated-collections"
-          sectionSubHeading="text-categories-grocery-items"
-          headingPosition={headingPosition}
-        />
+        <div className="text-center">
+          <h1 className="font-extrabold text-transparent text-md lg:text-2xl uppercase bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mb-3">
+            Students Experience at VedusOne Academy
+          </h1>
+        </div>
         {width! < 1536 ? (
           <Carousel
             breakpoints={breakpoints}
-            autoplay={{ delay: 4000 }}
+            autoplay={false}
+            // autoplay={{ delay: 30000 }}
             prevButtonClassName="-start-2.5 -top-14"
             nextButtonClassName="-end-2.5 -top-14"
             className="-mx-1.5 md:-mx-2 xl:-mx-2.5 -my-4"

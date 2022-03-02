@@ -1,7 +1,7 @@
 import Layout from '@components/layout';
 import Container from '@components/ui/container';
 import PageHeroSection from '@components/ui/page-hero-section';
-import { termsAndServices } from '@settings/terms-settings';
+import { returnAndRefund } from '@settings/return-policy';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import { GetStaticProps } from 'next';
@@ -10,19 +10,19 @@ import Heading from '@components/ui/heading';
 import Seo from '@components/seo/seo';
 
 export default function ReturnPolicyPage() {
-  const { t } = useTranslation('terms');
+  const { t } = useTranslation('return');
   return (
     <>
       <Seo
-        title="Return Policy"
+        title="Return &amp; Refund"
         description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
-        path="return-policy"
+        path="terms"
       />
       <PageHeroSection heroTitle="text-page-return-policy" />
       <div className="py-12 lg:py-16 2xl:py-20">
         <Container>
           <div className="w-full xl:max-w-[1200px] mx-auto">
-            {termsAndServices?.map((item) => (
+            {returnAndRefund?.map((item) => (
               // @ts-ignore
               <div
                 key={item.title}
@@ -55,7 +55,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
         'common',
         'forms',
         'menu',
-        'terms',
+        'return',
         'footer',
       ])),
     },

@@ -51,6 +51,10 @@ export default function Home() {
         <CourseVideo />
         <ContactInformation />
       </Container>
+      {/* <CollectionGrid
+        headingPosition="center"
+        className="xl:pt-2 2xl:pt-4 3xl:pt-6 pb-1 lg:pb-0 mb-12 lg:mb-14 xl:mb-16 2xl:mb-20"
+      /> */}
     </>
   );
 }

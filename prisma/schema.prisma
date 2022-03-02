@@ -88,6 +88,19 @@ model Order {
  
 }
 
+
+
+model Testinomial{
+  id        Int  @default(autoincrement()) @id
+  name      String
+  class     String?
+  status   String?
+  description String?
+  location  String ?
+  image    String?  
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+}
+
 model User {
   id            Int     @default(autoincrement()) @id
   name          String?
@@ -98,7 +111,7 @@ model User {
   state         String?
   class         String?
   medium        String?
-  mobile        String? @unique
+  mobile        String?
   whatsapp      String?
   image         String?
   userType      String?  
@@ -109,7 +122,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   posts         Post[]
-  verificationTokens    VerificationToken[]
+   verificationTokens    VerificationToken[]
 
 }
 
@@ -145,11 +158,12 @@ model Session {
 
 
 model VerificationToken {
+  id         Int     @default(autoincrement()) @id
   identifier String?
-  userId     Int
+  userId     Int?
   token      String   @unique
   expires    DateTime?   
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user User? @relation(fields: [userId], references: [id])
 
   @@unique([identifier, token])
 }
