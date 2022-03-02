@@ -78,7 +78,7 @@ export default function ContactForm() {
             stroke="none"
             stroke-width="1"
             fill="none"
-            fill-rule="evenodd"
+            fillRule="evenodd"
           >
             <g id="Desktop-HD" transform="translate(-1112.000000, -438.000000)">
               <g id="logo-4" transform="translate(1112.000000, 438.000000)">

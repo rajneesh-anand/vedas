@@ -26,5 +26,5 @@ export const API_ENDPOINTS = {
   SHOP: '/shop.json',
   SHOPS: '/shops.json',
   WISHLIST: '/wishlist.json',
-  STUDENT: '/user',
+  STUDENT: '/user/list/home',
 };
