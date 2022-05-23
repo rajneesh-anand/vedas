@@ -17,6 +17,15 @@ export type StudentsQueryOptionsType = {
   orderBy?: string;
 };
 
+export type TestinomialQueryOptionsType = {
+  text?: string;
+  status?: string;
+  limit?: number;
+  page?: number;
+  sortedBy?: string;
+  orderBy?: string;
+};
+
 export type CategoriesQueryOptionsType = {
   text?: string;
   category?: string;
@@ -171,4 +180,16 @@ export type Student = {
   message: string;
   subjects?: string[];
   enrollmentDate: string;
+};
+
+export type Testinomial = {
+  id: number | string;
+
+  name: string;
+  class: string;
+  status?: String;
+  description?: string;
+  location?: string;
+  image?: string;
+  createdAt?: string;
 };

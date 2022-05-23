@@ -50,9 +50,9 @@ const columns = [
     },
   },
   {
-    title: 'Order Type',
-    dataIndex: 'orderType',
-    key: 'orderType',
+    title: 'Plan Type',
+    dataIndex: 'planType',
+    key: 'planType',
   },
 
   {

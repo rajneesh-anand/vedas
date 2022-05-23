@@ -5,7 +5,7 @@ export const API_ENDPOINTS = {
   FORGET_PASSWORD: '/forget-password',
   CATEGORIES: '/categories.json',
   DIETARY: '/dietary.json',
-  BRANDS: '/brands.json',
+  TESTINOMIAL: '/testinomial/home',
   PRODUCTS: '/products.json',
   PRODUCT: '/product.json',
   RELATED_PRODUCTS: '/related_products.json',

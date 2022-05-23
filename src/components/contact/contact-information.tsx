@@ -80,18 +80,18 @@ const ContactInformation: FC = () => {
           </Heading>
           <p className="mb-1">
             <a
-              href="mailto:vedusone@gmail.com"
+              href="mailto: studentsupport@vedusone.com"
               className="text-skin-muted text-sm leading-7 lg:leading-[27px] lg:text-15px"
             >
-              vedusone@gmail.com
+              studentsupport@vedusone.com
             </a>
           </p>
           <p>
             <a
-              href="mailto: studentsupport@gmail.com"
+              href="mailto:vedusone@gmail.com"
               className="text-skin-muted text-sm leading-7 lg:leading-[27px] lg:text-15px"
             >
-              studentsupport@gmail.com
+              vedusone@gmail.com
             </a>
           </p>
         </div>

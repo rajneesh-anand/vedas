@@ -29,6 +29,7 @@ import { LIMITS } from '@framework/utils/limits';
 import ClassList from '@components/class/classlist';
 import { ImFacebook } from 'react-icons/im';
 import { useSession } from 'next-auth/react';
+import UnderMaintainance from '@components/under-maintainance';
 
 export default function Home() {
   const { data: token, status } = useSession();
@@ -37,7 +38,7 @@ export default function Home() {
     <>
       <Seo title="Home" description="Online Education Institute" path="/" />
 
-      <Container>
+      {/* <Container>
         <HomeTopSection />
         <ClassList />
         <FeatureCarousel />
@@ -49,17 +50,19 @@ export default function Home() {
           className="mb-12 lg:mb-14 xl:mb-16 2xl:mb-20"
         />
         <CourseVideo />
+        <CollectionGrid
+          headingPosition="center"
+          className="xl:pt-2 2xl:pt-4 3xl:pt-6 pb-1 lg:pb-0 mb-12 lg:mb-14 xl:mb-16 2xl:mb-20"
+        />
         <ContactInformation />
-      </Container>
-      {/* <CollectionGrid
-        headingPosition="center"
-        className="xl:pt-2 2xl:pt-4 3xl:pt-6 pb-1 lg:pb-0 mb-12 lg:mb-14 xl:mb-16 2xl:mb-20"
-      /> */}
+      </Container> */}
+
+      <UnderMaintainance />
     </>
   );
 }
 
-Home.Layout = Layout;
+// Home.Layout = Layout;
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const queryClient = new QueryClient();

@@ -85,7 +85,7 @@ export default function ForgotPassword() {
                 <Input
                   type="email"
                   variant="outline"
-                  label="What is your email address "
+                  label="What is your email address ? "
                   placeholder="What is you email address !"
                   {...register('email', {
                     required: 'You must provide your email address !',

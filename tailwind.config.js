@@ -30,6 +30,7 @@ module.exports = {
           muted: withOpacity('--color-text-muted'),
           secondary: withOpacity('--color-text-secondary'),
           countdown: withOpacity('--color-text-countdown'),
+          'header-primary': '#ed2775',
         },
       },
       backgroundColor: {
@@ -152,6 +153,7 @@ module.exports = {
     fontFamily: {
       body: ["'Inter', sans-serif"],
       manrope: ["'Manrope', sans-serif"],
+      roboto: ["'Roboto Condensed', sans-serif"],
     },
   },
   plugins: [

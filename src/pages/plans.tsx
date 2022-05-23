@@ -4,7 +4,7 @@ import Layout from '@components/layout';
 import Seo from '@components/seo/seo';
 import CourseVideoTwo from '@components/course/get-all-videos-two';
 import ContactInformation from '@components/contact/contact-information';
-import PlanInfo from '@components/class/multistep/plan';
+import PlanInfo from '@components/plan-information';
 
 import { GetServerSideProps } from 'next';
 import { QueryClient } from 'react-query';

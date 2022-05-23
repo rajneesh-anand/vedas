@@ -67,7 +67,7 @@ export default function LoginPage({ csrfToken }: any) {
       password: data.password,
       callbackUrl: 'http://localhost:3000',
     });
-    console.log(result);
+
     if (result?.error) {
       setErrorMsg(result?.error);
     }

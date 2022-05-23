@@ -11,9 +11,9 @@ export default NextAuth({
   providers: [
     CredentialsProvider({
       async authorize(credentials) {
-        const result = await prisma.user.findUnique({
+        const result = await prisma.user.findFirst({
           where: {
-            email: credentials.email,
+            AND: [{ email: credentials.email }, { status: 'Active' }],
           },
         });
 

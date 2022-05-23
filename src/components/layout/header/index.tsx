@@ -44,11 +44,11 @@ const Header: React.FC = () => {
       id="siteHeader"
       ref={siteHeaderRef}
       className={cn(
-        'header-one w-full h-16 lg:h-20 z-30 sticky top-0',
+        'header-one w-full z-30 sticky top-0',
         displayMobileSearch && 'active-mobile-search'
       )}
     >
-      <div className="innerSticky body-font bg-white w-full h-16 lg:h-20 z-20 transition duration-200 ease-in-out">
+      <div className="innerSticky bg-white w-full z-20 transition duration-200 ease-in-out">
         <Container className="flex items-center justify-between h-full w-full">
           <button
             aria-label="Menu"
@@ -79,13 +79,13 @@ const Header: React.FC = () => {
               <div className="inline-flex items-center">
                 <Link
                   href="/auth/register"
-                  className="bg-blue-500 text-sm  hover:bg-blue-700 text-white text-center py-2 px-4 rounded-full mr-1"
+                  className="bg-gradient-to-r from-yellow-500 via-pink-500 to-red-500 text-sm  hover:bg-blue-700 text-white text-center py-2 px-4 rounded-full mr-1"
                 >
                   Free Enroll Now
                 </Link>
                 <Link
                   href="/auth/signin"
-                  className="bg-blue-500 text-sm  hover:bg-blue-700 text-white text-center py-2 px-4 rounded-full"
+                  className="bg-gradient-to-r from-yellow-500 via-pink-500 to-red-500 text-sm  hover:bg-blue-700 text-white text-center py-2 px-4 rounded-full"
                 >
                   Sign In
                 </Link>

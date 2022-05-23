@@ -63,6 +63,7 @@ const Hiddenfrom = ({ mid, orderId, txnToken }) => {
 
 const PricingSmartPlanPage = ({ user }) => {
   const userInfo = user ? JSON.parse(user) : null;
+
   const { setPlan, removePlan, totalAmount, planInfo } = useFormData();
   const [pricingData, setPricingData] = useState();
   const [paytmData, setPaytmData] = useState({
